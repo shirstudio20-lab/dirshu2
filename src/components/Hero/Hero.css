@@ -170,25 +170,26 @@
     /* Softened at the foot only, and it has to reach zero before the frame
        is clipped: the film is pushed 22% below the box, so the fade ends at
        82% of its height — the last row that is actually on screen. */
+    /* A short fade at the very foot and nothing else: the film stays fully
+       opaque through 72% of its height, then goes in the last few percent —
+       just before the frame clips it at 82%. */
     -webkit-mask-image: linear-gradient(
       to bottom,
       #000 0%,
-      #000 38%,
-      rgba(0, 0, 0, 0.86) 52%,
-      rgba(0, 0, 0, 0.55) 63%,
-      rgba(0, 0, 0, 0.25) 71%,
-      rgba(0, 0, 0, 0.07) 77%,
-      transparent 82%
+      #000 72%,
+      rgba(0, 0, 0, 0.88) 76%,
+      rgba(0, 0, 0, 0.55) 79%,
+      rgba(0, 0, 0, 0.18) 81%,
+      transparent 82.5%
     );
     mask-image: linear-gradient(
       to bottom,
       #000 0%,
-      #000 38%,
-      rgba(0, 0, 0, 0.86) 52%,
-      rgba(0, 0, 0, 0.55) 63%,
-      rgba(0, 0, 0, 0.25) 71%,
-      rgba(0, 0, 0, 0.07) 77%,
-      transparent 82%
+      #000 72%,
+      rgba(0, 0, 0, 0.88) 76%,
+      rgba(0, 0, 0, 0.55) 79%,
+      rgba(0, 0, 0, 0.18) 81%,
+      transparent 82.5%
     );
   }
 
