@@ -44,6 +44,6 @@
    page has a single heading rhythm on a phone instead of nine. */
 @media (max-width: 1023px) {
   :root {
-    --text-section-title: clamp(42px, 11.2vw, 62px);
+    --text-section-title: clamp(38px, 10.1vw, 62px);
   }
 }

@@ -315,6 +315,11 @@
   .chafetz__heading {
     order: -1;
     font-size: var(--text-section-title);
+    /* Painted, not clipped: a failed background-clip leaves the text
+       invisible, and on a phone the gradient adds nothing at this size. */
+    background: none;
+    -webkit-text-fill-color: var(--color-gold-light);
+    color: var(--color-gold-light);
     text-align: center;
     white-space: normal;
     margin-bottom: clamp(18px, 4vw, 30px);
