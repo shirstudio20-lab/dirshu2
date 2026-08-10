@@ -256,13 +256,37 @@
     transform: translateY(-7px) rotate(-45deg);
   }
 
+  /* Open: the header takes the screen and the menu fills it, so nothing can
+     collide with the crest and the close button is always reachable. */
+  .site-header.is-open {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 100dvh;
+    align-items: flex-start;
+    background: #06112d;
+    z-index: 90;
+  }
+
+  /* The crest and the toggle ride above the sheet. */
+  .site-header.is-open .site-header__crest,
+  .site-header.is-open .site-header__toggle {
+    position: relative;
+    z-index: 2;
+  }
+
   .site-header__panel {
-    display: block;
+    display: flex;
+    flex-direction: column;
     position: absolute;
     left: 0;
     right: 0;
-    top: 100%;
-    padding: clamp(16px, 5vw, 28px) clamp(16px, 5vw, 32px) clamp(22px, 6vw, 32px);
+    top: 0;
+    bottom: 0;
+    z-index: 1;
+    padding: clamp(104px, 28vw, 150px) clamp(20px, 6vw, 34px) clamp(28px, 8vw, 44px);
+    overflow-y: auto;
     /* Same flat navy as the bar, so the whole sticky header reads as one colour. */
     background: #06112d;
     box-shadow: none;
@@ -286,11 +310,11 @@
   .nav-menu {
     flex-direction: column;
     align-items: flex-start;
-    gap: clamp(12px, 3.5vw, 18px);
+    gap: clamp(18px, 5vw, 26px);
   }
 
   .nav-menu__link {
-    font-size: clamp(16px, 4.2vw, 20px);
+    font-size: clamp(20px, 5.4vw, 26px);
   }
 
   /* No hover on touch — the underline would stick after a tap. */
@@ -298,17 +322,24 @@
     display: none;
   }
 
+  /* Pinned to the foot of the sheet, whatever the menu length. */
   .site-header__utility,
   .site-header.is-stuck .site-header__utility {
     position: static;
-    margin-top: clamp(18px, 5vw, 26px);
-    flex-wrap: wrap;
+    margin-top: auto;
+    padding-top: clamp(24px, 7vw, 36px);
+    flex-direction: column;
+    align-items: stretch;
     gap: clamp(14px, 4vw, 20px);
   }
 
+  .site-header__utility .language-switcher {
+    align-self: center;
+  }
+
   .site-header .pill-button {
-    width: clamp(200px, 56vw, 231px);
-    height: clamp(46px, 12vw, 54px);
+    width: 100%;
+    height: clamp(50px, 13vw, 58px);
   }
 
   .site-header .pill-button__label {

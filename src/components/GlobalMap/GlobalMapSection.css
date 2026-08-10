@@ -156,13 +156,13 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: clamp(56px, 5.6vw, 108px) clamp(16px, 4vw, 48px) clamp(40px, 4vw, 78px);
+  padding: clamp(28px, 5.6vw, 108px) clamp(12px, 4vw, 48px) clamp(36px, 4vw, 78px);
 }
 
 .global-map__heading {
   font-family: var(--font-display);
   font-weight: 700;
-  font-size: clamp(30px, 4.74vw, 91px);
+  font-size: clamp(36px, 4.74vw, 91px);
   line-height: 1;
   text-align: center;
   background: linear-gradient(to right, var(--color-gold-light), var(--color-gold));
@@ -289,7 +289,7 @@
 .global-map__dot {
   position: relative;
   display: block;
-  width: clamp(14px, 4.2%, 26px);
+  width: clamp(11px, 3.5%, 26px);
   aspect-ratio: 1;
   border-radius: 50%;
   background: radial-gradient(circle at 38% 32%, #fff6e4 0%, #f2ddbb 45%, var(--color-gold) 100%);
@@ -530,7 +530,7 @@ a.branch-card__text:focus-visible {
 
 @media (max-width: 1023px) {
   .global-map__stage {
-    width: min(100%, 560px);
+    width: min(124%, 620px);
   }
 
   .global-map__card {

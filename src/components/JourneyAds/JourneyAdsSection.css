@@ -186,7 +186,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: clamp(48px, 11vw, 88px) clamp(16px, 5vw, 32px);
+    padding: clamp(26px, 6vw, 88px) clamp(16px, 5vw, 32px) clamp(34px, 8vw, 88px);
   }
 
   .journey-ads__backdrop {
@@ -197,7 +197,7 @@
   .journey-ads__heading {
     position: static;
     width: auto;
-    font-size: clamp(28px, 5.2vw, 56px);
+    font-size: clamp(34px, 9vw, 56px);
     white-space: normal;
   }
 
@@ -222,11 +222,10 @@
     position: static;
     display: flex;
     align-items: center;
-    justify-content: center;
-    gap: clamp(48px, 16vw, 110px);
-    width: auto;
+    justify-content: space-between;
+    width: min(70%, 280px);
     height: auto;
-    margin-top: clamp(24px, 6vw, 40px);
+    margin-top: clamp(20px, 5vw, 36px);
   }
 
   .carousel-arrow {
@@ -234,6 +233,17 @@
     width: 48px;
     height: 48px;
     flex-shrink: 0;
+  }
+
+  /* RTL: the next advertisement lies to the left, so the button that points
+     left has to be the one on the left. In an RTL row the first child sits on
+     the right, so the two are ordered explicitly. */
+  .carousel-arrow--previous {
+    order: 1;
+  }
+
+  .carousel-arrow--next {
+    order: 2;
   }
 }
 

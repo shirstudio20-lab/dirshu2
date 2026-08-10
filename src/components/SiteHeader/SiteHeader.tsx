@@ -30,9 +30,24 @@ export function SiteHeader() {
     return () => window.removeEventListener('scroll', onScroll)
   }, [])
 
+  // The phone menu covers the screen, so it needs every ordinary way out:
+  // the button, ESC, and following a link. The page behind it stays put.
   useEffect(() => {
-    if (!isStuck) setIsOpen(false)
-  }, [isStuck])
+    if (!isOpen) return
+
+    const onKeyDown = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') setIsOpen(false)
+    }
+
+    const previousOverflow = document.body.style.overflow
+    document.body.style.overflow = 'hidden'
+    document.addEventListener('keydown', onKeyDown)
+
+    return () => {
+      document.removeEventListener('keydown', onKeyDown)
+      document.body.style.overflow = previousOverflow
+    }
+  }, [isOpen])
 
   return (
     <header className={`site-header ${isOpen ? 'is-open' : ''} ${isStuck ? 'is-stuck' : ''}`}>
@@ -52,7 +67,7 @@ export function SiteHeader() {
         <span />
       </button>
 
-      <div className="site-header__panel">
+      <div className="site-header__panel" onClick={() => setIsOpen(false)}>
         <NavMenu />
 
         <div className="site-header__utility">

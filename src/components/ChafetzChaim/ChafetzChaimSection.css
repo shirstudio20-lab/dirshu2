@@ -258,7 +258,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: clamp(28px, 6vw, 54px) clamp(16px, 5vw, 32px) clamp(26px, 5.5vw, 48px);
+    padding: clamp(20px, 4.5vw, 54px) clamp(16px, 5vw, 32px) clamp(26px, 5.5vw, 48px);
   }
 
   .chafetz__inner {
@@ -277,9 +277,29 @@
     left: auto;
     top: auto;
     order: 2;
-    width: min(100%, 420px);
+    width: min(62%, 268px);
     height: auto;
-    aspect-ratio: 600 / 641;
+    aspect-ratio: 553 / 591;
+  }
+
+  /* Everything in the column reads from the centre on a phone. */
+  .chafetz__body,
+  .chafetz__offer,
+  .chafetz__heading {
+    text-align: center;
+  }
+
+  .chafetz__offer {
+    align-items: center;
+  }
+
+  .chafetz__offer-price {
+    justify-content: center;
+  }
+
+  .chafetz__actions {
+    align-items: center;
+    justify-content: center;
   }
 
   .chafetz__copy {
@@ -294,7 +314,7 @@
 
   .chafetz__heading {
     order: -1;
-    font-size: clamp(28px, 6vw, 60px);
+    font-size: clamp(34px, 9vw, 60px);
     text-align: center;
     white-space: normal;
     margin-bottom: clamp(18px, 4vw, 30px);

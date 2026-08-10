@@ -20,6 +20,12 @@
   transform: scale(1.55) translate(-17%, -4.5%);
 }
 
+/* On the canvas the wrapper must not exist as a box, or it would become
+   the containing block for the two absolutely placed layers. */
+.hero__media {
+  display: contents;
+}
+
 .hero__backdrop--film {
   /* Over the still, under the header and the copy. */
   z-index: 0;
@@ -104,10 +110,111 @@
   }
 }
 
-/* Phones: the house sits high and left, clear of the copy at the foot. */
+/* --- phones: one screen, film on top, copy centred underneath ------------ */
+
 @media (max-width: 767px) {
+  .hero {
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: flex-start;
+    height: 100svh;
+    min-height: 100svh;
+    /* Sampled off the film: sky at the top, deepening to the section navy
+       where the copy sits, so the letterboxed frame has no visible seam. */
+    background: linear-gradient(
+      180deg,
+      #16293e 0%,
+      #14273c 16%,
+      #101f33 34%,
+      #0a1728 56%,
+      #061323 76%,
+      #03101f 100%
+    );
+    /* Clear of the header bar, which floats over the section. */
+    padding-top: clamp(54px, 16vw, 92px);
+  }
+
+  /* A real box now: the whole frame is shown rather than cropped, so the
+     building is complete. */
+  /* The film is drawn wider than the screen and anchored to the left edge of
+     the plate, which is where the building sits. That fills the height the
+     phone layout wants without letterboxing and without cropping the house —
+     what is lost is sky on the far side. */
+  .hero__media {
+    display: block;
+    position: relative;
+    flex: 0 0 auto;
+    width: 100%;
+    height: clamp(300px, 46svh, 470px);
+    overflow: hidden;
+  }
+
   .hero__backdrop {
-    object-position: 16% 34%;
-    transform: scale(1.04);
+    position: absolute;
+    inset: auto auto 0 0;
+    width: 175%;
+    height: auto;
+    object-fit: contain;
+    transform: none;
+    /* Dissolves into the background instead of ending on a straight edge:
+       solid through the middle, gone by the last pixel at either end. */
+    -webkit-mask-image: linear-gradient(
+      to bottom,
+      transparent 0%,
+      rgba(0, 0, 0, 0.55) 7%,
+      #000 17%,
+      #000 54%,
+      rgba(0, 0, 0, 0.82) 72%,
+      rgba(0, 0, 0, 0.42) 86%,
+      rgba(0, 0, 0, 0.12) 95%,
+      transparent 100%
+    );
+    mask-image: linear-gradient(
+      to bottom,
+      transparent 0%,
+      rgba(0, 0, 0, 0.55) 7%,
+      #000 17%,
+      #000 54%,
+      rgba(0, 0, 0, 0.82) 72%,
+      rgba(0, 0, 0, 0.42) 86%,
+      rgba(0, 0, 0, 0.12) 95%,
+      transparent 100%
+    );
+  }
+
+  .hero__content {
+    flex: 1 1 auto;
+    min-height: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    gap: clamp(10px, 2svh, 20px);
+    padding: clamp(6px, 1.4svh, 18px) clamp(18px, 6vw, 34px) clamp(16px, 3svh, 34px);
+  }
+
+  .hero__title {
+    align-items: center;
+    text-align: center;
+    font-size: clamp(40px, 12.4vw, 68px);
+  }
+
+  .hero__lede {
+    width: 100%;
+    max-width: 34rem;
+    font-size: clamp(15px, 4.1vw, 20px);
+    line-height: 1.45;
+    text-align: center;
+  }
+
+  .hero__content .pill-button {
+    width: 100%;
+    max-width: 26rem;
+    height: clamp(50px, 7svh, 62px);
+  }
+
+  .hero__content .pill-button__label {
+    font-size: clamp(16px, 4.2vw, 19px);
   }
 }

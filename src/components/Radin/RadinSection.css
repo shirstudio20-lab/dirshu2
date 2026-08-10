@@ -35,14 +35,14 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: clamp(52px, 5.2vw, 100px) clamp(16px, 4vw, 48px) clamp(58px, 5.8vw, 110px);
+  padding: clamp(28px, 5.2vw, 100px) clamp(16px, 4vw, 48px) clamp(44px, 5.8vw, 110px);
 }
 
 /* Node 52:1272 — gradient fill clipped to the glyphs. */
 .radin__heading {
   font-family: var(--font-display);
   font-weight: 700;
-  font-size: clamp(30px, 4.74vw, 91px);
+  font-size: clamp(36px, 4.74vw, 91px);
   line-height: 1;
   text-align: center;
   background: linear-gradient(91.38deg, #ecd8b9 0.21%, #9a805b 140.28%);

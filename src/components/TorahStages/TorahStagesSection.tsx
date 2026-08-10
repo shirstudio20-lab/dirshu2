@@ -67,8 +67,8 @@ export function TorahStagesSection({
   const visualScale = fluid
     ? Math.min(
         1,
-        (viewportWidth * 0.55) / VISUAL_WIDTH,
-        (viewportHeight * 0.3) / VISUAL_HEIGHT,
+        (viewportWidth * 0.8) / VISUAL_WIDTH,
+        (viewportHeight * 0.44) / VISUAL_HEIGHT,
       )
     : 1
 

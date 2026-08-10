@@ -16,20 +16,25 @@ export function Hero({ scale, fluid }: HeroProps) {
 
   return (
     <ScaledStage designHeight={HERO_HEIGHT} scale={scale} fluid={fluid} className="hero">
-      {/* The still sits underneath and is also the poster, so it carries the
-          hero on its own if the film is blocked, still loading or fails. */}
-      <img className="hero__backdrop hero__backdrop--still" src="/assets/hero-bg.png" alt="" />
-      <video
-        className="hero__backdrop hero__backdrop--film"
-        src="/assets/hero.mp4"
-        poster="/assets/hero-bg.png"
-        autoPlay
-        muted
-        loop
-        playsInline
-        preload="auto"
-        aria-hidden="true"
-      />
+      {/* `display: contents` on the canvas, so the two layers keep their Figma
+          coordinates. On phones it becomes a real box: the film sits in the
+          flow at the top of the section with the copy underneath it. */}
+      <div className="hero__media">
+        {/* The still sits underneath and is also the poster, so it carries the
+            hero on its own if the film is blocked, still loading or fails. */}
+        <img className="hero__backdrop hero__backdrop--still" src="/assets/hero-bg.png" alt="" />
+        <video
+          className="hero__backdrop hero__backdrop--film"
+          src="/assets/hero.mp4"
+          poster="/assets/hero-bg.png"
+          autoPlay
+          muted
+          loop
+          playsInline
+          preload="auto"
+          aria-hidden="true"
+        />
+      </div>
 
 
       <div className="hero__content">
