@@ -39,3 +39,11 @@
   --radius-pill: 50px;
   --gradient-gold: linear-gradient(to right, var(--color-gold-light), var(--color-gold));
 }
+
+/* Below the canvas breakpoint every section title shares one size, so the
+   page has a single heading rhythm on a phone instead of nine. */
+@media (max-width: 1023px) {
+  :root {
+    --text-section-title: clamp(42px, 11.2vw, 62px);
+  }
+}

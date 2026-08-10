@@ -67,13 +67,16 @@ export function SiteHeader() {
         <span />
       </button>
 
+      {/* Outside the panel: on the canvas `display: contents` flattens it away
+          so the Figma coordinates are unchanged, and on a phone it can sit in
+          the bar itself rather than being hidden behind the menu. */}
+      <div className="site-header__utility">
+        <PillButton onClick={prayerModal.open}>שליחת שמות לתפילה</PillButton>
+        <LanguageSwitcher />
+      </div>
+
       <div className="site-header__panel" onClick={() => setIsOpen(false)}>
         <NavMenu />
-
-        <div className="site-header__utility">
-          <PillButton onClick={prayerModal.open}>שליחת שמות לתפילה</PillButton>
-          <LanguageSwitcher />
-        </div>
       </div>
     </header>
   )

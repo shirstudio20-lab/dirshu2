@@ -27,7 +27,7 @@
 .gallery__heading {
   font-family: var(--font-display);
   font-weight: 700;
-  font-size: clamp(34px, 4.74vw, 91px);
+  font-size: clamp(var(--text-section-title), 4.74vw, 91px);
   line-height: 1;
   color: var(--color-navy);
   text-align: center;

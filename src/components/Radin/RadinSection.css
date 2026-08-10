@@ -42,7 +42,7 @@
 .radin__heading {
   font-family: var(--font-display);
   font-weight: 700;
-  font-size: clamp(36px, 4.74vw, 91px);
+  font-size: clamp(var(--text-section-title), 4.74vw, 91px);
   line-height: 1;
   text-align: center;
   background: linear-gradient(91.38deg, #ecd8b9 0.21%, #9a805b 140.28%);

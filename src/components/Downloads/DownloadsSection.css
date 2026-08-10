@@ -146,21 +146,39 @@
   .downloads__heading {
     position: static;
     width: auto;
-    font-size: clamp(34px, 9vw, 64px);
+    font-size: var(--text-section-title);
     white-space: normal;
   }
 
+  /* The לוח leads on its own full-width row; the two volumes pair up under
+     it, so the section reads as one block rather than a long stack. */
   .downloads__grid {
     position: static;
     width: 100%;
-    max-width: 420px;
-    grid-template-columns: 1fr;
-    gap: clamp(20px, 5vw, 32px);
+    max-width: 460px;
+    grid-template-columns: repeat(2, 1fr);
+    gap: clamp(12px, 3.5vw, 22px);
+  }
+
+  .downloads__grid > .download-card:first-child {
+    grid-column: 1 / -1;
+  }
+
+  /* Half-width cards need the label to wrap. */
+  .download-card__cta {
+    white-space: normal;
+    text-align: center;
+    padding: 0 14px;
+    gap: 10px;
+  }
+
+  .downloads__grid > .download-card:first-child .download-card__cta {
+    white-space: nowrap;
   }
 
   .download-card {
-    gap: clamp(16px, 4vw, 24px);
-    padding: clamp(14px, 3.5vw, 22px);
+    gap: clamp(12px, 3vw, 20px);
+    padding: clamp(10px, 2.8vw, 20px);
     border-radius: clamp(16px, 4vw, 24px);
   }
 
@@ -169,8 +187,12 @@
   .download-card__preview {
     width: 100%;
     aspect-ratio: auto;
-    height: clamp(150px, 42vw, 200px);
+    height: clamp(122px, 34vw, 200px);
     border-radius: clamp(14px, 4vw, 20px);
+  }
+
+  .downloads__grid > .download-card:first-child .download-card__preview {
+    height: clamp(150px, 42vw, 220px);
   }
 
   .download-card__preview img {
@@ -178,8 +200,11 @@
   }
 
   .download-card__cta {
-    height: clamp(52px, 13vw, 66px);
-    font-size: clamp(13px, 3.3vw, 18px);
+    height: auto;
+    min-height: clamp(52px, 13vw, 66px);
+    padding-block: 10px;
+    font-size: clamp(12px, 3.1vw, 18px);
+    line-height: 1.25;
   }
 }
 
@@ -187,7 +212,6 @@
 @media (min-width: 640px) and (max-width: 1023px) {
   .downloads__grid {
     max-width: 720px;
-    grid-template-columns: repeat(2, 1fr);
   }
 }
 
