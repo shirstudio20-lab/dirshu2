@@ -1,0 +1,32 @@
+.pill-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 231px;
+  height: 54px;
+  padding: 10px;
+  border-radius: var(--radius-pill);
+  background: var(--gradient-gold);
+  flex-shrink: 0;
+}
+
+.pill-button__label {
+  font-family: var(--font-body);
+  font-weight: 400;
+  font-size: var(--text-button);
+  line-height: normal;
+  color: var(--color-navy-deep);
+  white-space: nowrap;
+  text-align: right;
+}
+
+@media (max-width: 1023px) {
+  .pill-button {
+    width: clamp(200px, 56vw, 231px);
+    height: clamp(46px, 12vw, 54px);
+  }
+
+  .pill-button__label {
+    font-size: clamp(15px, 3.6vw, 18px);
+  }
+}

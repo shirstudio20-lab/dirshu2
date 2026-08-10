@@ -1,0 +1,40 @@
+/* The Figma file uses two licensed Hebrew families:
+     • Levi DL v1 AAA   — display / headings (Bold)
+     • Atlas DL 3.1 AAA — body (Light / Regular / Bold)
+
+   They cannot be fetched from a CDN. Drop the licensed web files into
+   public/fonts/ using the names below and they take over automatically;
+   until then the stacks in tokens.css fall back to Frank Ruhl Libre /
+   Heebo, which are metrically close enough to keep the layout intact. */
+
+@font-face {
+  font-family: 'Levi DL v1 AAA';
+  src: url('/fonts/LeviDL-Bold.woff2') format('woff2');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Atlas DL 3.1 AAA';
+  src: url('/fonts/AtlasDL-Light.woff2') format('woff2');
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Atlas DL 3.1 AAA';
+  src: url('/fonts/AtlasDL-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Atlas DL 3.1 AAA';
+  src: url('/fonts/AtlasDL-Bold.woff2') format('woff2');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}

@@ -1,0 +1,352 @@
+/* ---------------------------------------------------------------------------
+   Section "תורת החפץ חיים" — nodes 52:1242–52:1458.
+   Coordinates are Figma values on the 1920 canvas.
+   --------------------------------------------------------------------------- */
+
+.chafetz {
+  position: relative;
+  background: #002246;
+}
+
+/* The supplied blue backdrop, rebuilt in CSS: light falling from the upper
+   left, deep navy through the middle and a soft horizon glow low down. It is
+   a smooth gradient, so this matches it and stays sharp at any size.
+   To use the JPEG instead, swap the whole background for:
+   background: url('/assets/chafetz-chaim-bg.jpg') center / cover no-repeat; */
+.chafetz__background {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(ellipse 120% 60% at 50% 88%, rgba(27, 74, 140, 0.85) 0%, rgba(10, 28, 60, 0) 62%),
+    radial-gradient(ellipse 90% 80% at 6% 4%, rgba(34, 78, 143, 0.9) 0%, rgba(9, 24, 52, 0) 58%),
+    radial-gradient(ellipse 70% 60% at 88% 22%, rgba(6, 18, 42, 0.9) 0%, rgba(6, 18, 42, 0) 70%),
+    linear-gradient(to bottom, #0b2044 0%, #071630 44%, #061128 72%, #08203f 100%);
+}
+
+.chafetz__inner {
+  position: absolute;
+  inset: 0;
+}
+
+/* --- artwork, nodes 52:1987 / 52:1457 ------------------------------------ */
+
+.chafetz__artwork {
+  position: absolute;
+  left: 220px;
+  top: 86px;
+  width: 553px;
+  height: 591px;
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity 800ms ease-out, transform 800ms cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+
+.chafetz.is-revealed .chafetz__artwork {
+  opacity: 1;
+  transform: none;
+}
+
+/* Node 52:1987 — a soft pool of light behind the set. */
+.chafetz__glow {
+  position: absolute;
+  left: -83%;
+  top: -80%;
+  width: 266%;
+  height: 266%;
+  pointer-events: none;
+}
+
+.chafetz__books {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+/* The shadow the set casts on the surface it stands on. Two layers, because a
+   single ellipse reads as a printed oval: a wide, very soft penumbra that
+   spreads outward, and a tight, darker core right where the boards meet the
+   ground. Both sit below the books, so the covers are never darkened. */
+.chafetz__artwork::before,
+.chafetz__artwork::after {
+  content: '';
+  position: absolute;
+  z-index: 1;
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+/* Penumbra — wider than the set and barely there at its edges. */
+.chafetz__artwork::before {
+  left: -4%;
+  bottom: -5%;
+  width: 108%;
+  height: 12%;
+  background: radial-gradient(
+    ellipse at 50% 50%,
+    rgba(2, 8, 20, 0.34) 0%,
+    rgba(2, 8, 20, 0.16) 40%,
+    rgba(2, 8, 20, 0.05) 64%,
+    rgba(2, 8, 20, 0) 78%
+  );
+  filter: blur(22px);
+}
+
+/* Contact core — short, dark and only lightly blurred, so the set reads as
+   resting on the surface rather than hovering over it. */
+.chafetz__artwork::after {
+  left: 11%;
+  bottom: -0.6%;
+  width: 78%;
+  height: 3.2%;
+  background: radial-gradient(
+    ellipse at 50% 50%,
+    rgba(1, 5, 14, 0.6) 0%,
+    rgba(1, 5, 14, 0.34) 44%,
+    rgba(1, 5, 14, 0) 74%
+  );
+  filter: blur(5px);
+}
+
+/* --- copy ----------------------------------------------------------------- */
+
+.chafetz__copy {
+  position: absolute;
+  left: 1042px;
+  top: 147px;
+  width: 649px;
+  opacity: 0;
+  transform: translateY(14px);
+  transition: opacity 800ms ease-out 120ms, transform 800ms cubic-bezier(0.22, 0.61, 0.36, 1) 120ms;
+}
+
+.chafetz.is-revealed .chafetz__copy {
+  opacity: 1;
+  transform: none;
+}
+
+/* Node 52:1273 — gradient fill clipped to the glyphs. */
+.chafetz__heading {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 80px;
+  line-height: 1;
+  text-align: right;
+  white-space: nowrap;
+  background: linear-gradient(to right, var(--color-gold-light), var(--color-gold) 128.43%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* Node 52:1454 */
+.chafetz__body {
+  margin-top: 37px;
+  width: 618px;
+  max-width: 100%;
+  font-family: var(--font-body);
+  font-weight: 400;
+  font-size: 22px;
+  line-height: 1.2;
+  color: var(--color-white);
+  text-align: justify;
+}
+
+/* Node 52:1458 */
+.chafetz__offer {
+  display: flex;
+  flex-direction: column;
+  margin-top: 45px;
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-size: 35px;
+  line-height: 1.4;
+  text-align: right;
+}
+
+/* Gold on both lines; the new price leads, the old one steps back. */
+.chafetz__offer-label {
+  color: var(--color-gold-light);
+}
+
+.chafetz__offer-price {
+  display: flex;
+  align-items: baseline;
+  gap: 14px;
+}
+
+.chafetz__offer-new {
+  font-size: 1.16em;
+  color: var(--color-gold-light);
+}
+
+.chafetz__offer-old {
+  font-size: 0.62em;
+  font-weight: 400;
+  color: rgba(236, 216, 185, 0.55);
+  text-decoration-line: line-through;
+}
+
+/* Node 52:1447 — two pills, 17px apart. */
+.chafetz__actions {
+  display: flex;
+  align-items: center;
+  gap: 17px;
+  margin-top: 78px;
+}
+
+/* Nodes 52:1448 / 52:1451 */
+/* Both buttons share every measurement, so they read as a pair against the
+   darker background: same height, same padding, icon and text on one baseline. */
+.chafetz__action {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  height: 68px;
+  padding: 0 30px;
+  border-radius: var(--radius-pill);
+  background: #f7f1e0;
+  border: 1px solid rgba(13, 49, 103, 0.14);
+  font-family: var(--font-body);
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 1;
+  color: #0d3167;
+  white-space: nowrap;
+  transition: transform 200ms ease-out, box-shadow 200ms ease-out, background-color 200ms ease-out;
+}
+
+.chafetz__action:hover:not(:disabled),
+.chafetz__action:focus-visible {
+  background: #fffaf0;
+}
+
+.chafetz__action:hover:not(:disabled),
+.chafetz__action:focus-visible {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.28);
+}
+
+.chafetz__action:disabled {
+  cursor: default;
+  opacity: 0.72;
+}
+
+.chafetz__action-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 22px;
+  height: 22px;
+  flex-shrink: 0;
+  color: #0d3167;
+}
+
+.chafetz__action-icon svg {
+  width: 100%;
+  height: 100%;
+}
+
+/* --- below 1024px: heading, books, copy, offer, buttons ------------------ */
+
+@media (max-width: 1023px) {
+  .chafetz .scaled-stage--fluid {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: clamp(28px, 6vw, 54px) clamp(16px, 5vw, 32px) clamp(26px, 5.5vw, 48px);
+  }
+
+  .chafetz__inner {
+    position: static;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: clamp(22px, 5vw, 36px);
+    width: 100%;
+    max-width: 620px;
+  }
+
+  /* Heading first, then the books, then the rest. */
+  .chafetz__artwork {
+    position: relative;
+    left: auto;
+    top: auto;
+    order: 2;
+    width: min(100%, 420px);
+    height: auto;
+    aspect-ratio: 600 / 641;
+  }
+
+  .chafetz__copy {
+    position: relative;
+    left: auto;
+    top: auto;
+    order: 3;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .chafetz__heading {
+    order: -1;
+    font-size: clamp(28px, 6vw, 60px);
+    text-align: center;
+    white-space: normal;
+    margin-bottom: clamp(18px, 4vw, 30px);
+  }
+
+  .chafetz__body {
+    margin-top: 0;
+    width: 100%;
+    font-size: clamp(14px, 3.4vw, 19px);
+    line-height: 1.45;
+  }
+
+  .chafetz__offer {
+    margin-top: clamp(18px, 4vw, 28px);
+    font-size: clamp(19px, 4.6vw, 30px);
+    text-align: center;
+  }
+
+  .chafetz__actions {
+    margin-top: clamp(20px, 5vw, 32px);
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: clamp(12px, 3vw, 17px);
+  }
+
+  .chafetz__action {
+    height: clamp(52px, 13vw, 64px);
+    font-size: clamp(14px, 3.6vw, 18px);
+  }
+}
+
+/* One heading needs to sit above the artwork, so it is lifted out of the copy
+   column and centred on its own row. */
+@media (max-width: 1023px) {
+  .chafetz__inner {
+    display: grid;
+    grid-template-columns: 1fr;
+    justify-items: center;
+  }
+}
+
+@media (max-width: 479px) {
+  .chafetz__action {
+    width: 100%;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .chafetz__artwork,
+  .chafetz__copy {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}

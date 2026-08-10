@@ -1,0 +1,215 @@
+/* ---------------------------------------------------------------------------
+   Section "להימנות עם לומדי תורתו" — nodes 52:1237–52:1468.
+   Coordinates are Figma values on the 1920 canvas.
+   --------------------------------------------------------------------------- */
+
+.join {
+  position: relative;
+  background: #f2ede1;
+}
+
+/* Its own layer, so the texture can be swapped for a colour or a gradient
+   without touching anything inside the section. */
+.join__background {
+  position: absolute;
+  inset: 0;
+  background-image: url('/assets/join-texture.jpg');
+  background-size: cover;
+  background-position: center;
+  pointer-events: none;
+}
+
+.join .scaled-stage,
+.join .scaled-stage--fluid {
+  background: none;
+}
+
+.join__inner {
+  position: absolute;
+  inset: 0;
+}
+
+/* Node 52:1275 */
+.join__heading {
+  position: absolute;
+  left: 579px;
+  top: 94px;
+  width: 763px;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 80px;
+  line-height: 1;
+  color: var(--color-navy);
+  text-align: center;
+  white-space: nowrap;
+}
+
+/* Node 52:1459 */
+.join__subtitle {
+  position: absolute;
+  left: 604px;
+  top: 194px;
+  width: 712px;
+  font-family: var(--font-body);
+  font-weight: 500;
+  font-size: 29px;
+  line-height: 1.2;
+  color: var(--color-navy);
+  text-align: center;
+  white-space: nowrap;
+}
+
+/* Node 52:1460 — 1290 × 71 at (315, 301), 18px gaps. */
+.join__form {
+  position: absolute;
+  left: 315px;
+  top: 301px;
+  width: 1290px;
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+
+.join__field {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 309px;
+  height: 71px;
+  padding: 10px 18px;
+  flex-shrink: 0;
+  background: var(--color-white);
+  border: 1px solid #c9c9c9;
+  border-radius: 12px;
+  transition: border-color 200ms ease-out, box-shadow 200ms ease-out;
+}
+
+.join__field:hover {
+  border-color: #a9a9a9;
+}
+
+.join__field:focus-within {
+  border-color: var(--color-gold);
+  box-shadow: 0 0 0 3px rgba(154, 128, 91, 0.16);
+}
+
+.join__field-label {
+  font-family: var(--font-body);
+  font-weight: 400;
+  font-size: 22px;
+  line-height: 1.2;
+  color: var(--color-navy);
+  white-space: nowrap;
+  flex-shrink: 0;
+  order: 1;
+}
+
+.join__input {
+  order: 2;
+  flex: 1 1 auto;
+  min-width: 0;
+  height: 100%;
+  padding: 0;
+  font-family: var(--font-body);
+  font-size: 22px;
+  color: var(--color-navy);
+  background: none;
+  border: 0;
+  text-align: right;
+}
+
+.join__input:focus {
+  outline: none;
+}
+
+/* Node 52:1461 */
+.join__submit {
+  width: 309px;
+  height: 71px;
+  flex-shrink: 0;
+  padding: 10px;
+  border: 1px solid #c9c9c9;
+  border-radius: var(--radius-pill);
+  background: var(--gradient-gold);
+  font-family: var(--font-body);
+  font-weight: 400;
+  font-size: 22px;
+  line-height: 1.2;
+  color: var(--color-navy);
+  white-space: nowrap;
+  transition: filter 200ms ease-out, transform 200ms ease-out;
+}
+
+.join__submit:hover,
+.join__submit:focus-visible {
+  filter: brightness(1.04);
+}
+
+.join__submit:active {
+  transform: translateY(1px);
+}
+
+/* --- below 1024px -------------------------------------------------------- */
+
+@media (max-width: 1023px) {
+  .join .scaled-stage--fluid {
+    padding: clamp(40px, 9vw, 72px) clamp(16px, 5vw, 32px) clamp(44px, 10vw, 76px);
+  }
+
+  .join__inner {
+    position: static;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: clamp(12px, 3vw, 20px);
+  }
+
+  .join__heading,
+  .join__subtitle {
+    position: static;
+    width: auto;
+    max-width: 100%;
+    white-space: normal;
+  }
+
+  .join__heading {
+    font-size: clamp(28px, 6vw, 60px);
+  }
+
+  .join__subtitle {
+    font-size: clamp(14px, 3.2vw, 24px);
+  }
+
+  .join__form {
+    position: static;
+    width: 100%;
+    max-width: 560px;
+    margin-top: clamp(10px, 2.5vw, 18px);
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: clamp(12px, 3vw, 18px);
+  }
+
+  .join__field,
+  .join__submit {
+    width: 100%;
+    height: clamp(52px, 13vw, 64px);
+  }
+
+  .join__field-label,
+  .join__input,
+  .join__submit {
+    font-size: clamp(16px, 4vw, 20px);
+  }
+}
+
+/* Tablets are wide enough for two fields to a row. */
+@media (min-width: 620px) and (max-width: 1023px) {
+  .join__form {
+    max-width: 660px;
+  }
+
+  .join__field {
+    width: calc(50% - 9px);
+  }
+}

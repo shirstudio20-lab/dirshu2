@@ -1,0 +1,220 @@
+.prayer-form {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(16px, 4vw, 22px);
+}
+
+.prayer-form__rows {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(14px, 3.5vw, 18px);
+}
+
+.prayer-form__row {
+  display: flex;
+  align-items: flex-end;
+  gap: clamp(10px, 2.6vw, 16px);
+}
+
+/* The numbered square that opens each row in the design. */
+.prayer-form__index {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 26px;
+  height: 26px;
+  flex-shrink: 0;
+  margin-bottom: 4px;
+  border: 1px solid rgba(13, 49, 103, 0.45);
+  border-radius: 4px;
+  font-family: var(--font-body);
+  font-size: 13px;
+  color: var(--color-navy);
+}
+
+.prayer-form__field {
+  flex: 1 1 0;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.prayer-form__label {
+  font-family: var(--font-body);
+  font-weight: 400;
+  font-size: clamp(13px, 3.2vw, 15px);
+  color: var(--color-navy);
+  text-align: right;
+}
+
+.prayer-form__input {
+  width: 100%;
+  min-width: 0;
+  height: 34px;
+  padding: 0 2px;
+  font: inherit;
+  font-family: var(--font-body);
+  font-size: clamp(14px, 3.4vw, 16px);
+  color: var(--color-navy);
+  background: none;
+  border: 0;
+  border-bottom: 1.5px solid var(--color-navy);
+  border-radius: 0;
+  text-align: right;
+  transition: border-color 200ms ease-out;
+}
+
+.prayer-form__input:focus {
+  outline: none;
+  border-bottom-color: var(--color-gold);
+}
+
+.prayer-form__input.has-error {
+  border-bottom-color: #b4442f;
+}
+
+.prayer-form__remove {
+  width: 30px;
+  height: 30px;
+  flex-shrink: 0;
+  margin-bottom: 2px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(13, 49, 103, 0.35);
+  border-radius: 4px;
+  color: var(--color-navy);
+  opacity: 0.75;
+  transition: opacity 200ms ease-out;
+}
+
+.prayer-form__remove:hover,
+.prayer-form__remove:focus-visible {
+  opacity: 1;
+}
+
+.prayer-form__remove svg {
+  width: 18px;
+  height: 18px;
+}
+
+.prayer-form__add {
+  display: flex;
+  align-items: center;
+  gap: clamp(10px, 2.6vw, 16px);
+}
+
+.prayer-form__index--plus {
+  margin-bottom: 0;
+  font-size: 16px;
+}
+
+.prayer-form__add-button {
+  min-height: 40px;
+  padding: 0 clamp(16px, 4vw, 26px);
+  border-radius: 4px;
+  background: var(--color-navy);
+  color: var(--color-white);
+  font-family: var(--font-body);
+  font-size: clamp(13px, 3.2vw, 15px);
+  transition: background-color 200ms ease-out;
+}
+
+.prayer-form__add-button:hover,
+.prayer-form__add-button:focus-visible {
+  background: #0a2650;
+}
+
+.prayer-form__privacy {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 10px;
+  font-family: var(--font-body);
+  font-size: clamp(13px, 3.2vw, 15px);
+  color: var(--color-navy);
+  cursor: pointer;
+}
+
+.prayer-form__privacy input {
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+  accent-color: var(--color-navy);
+}
+
+.prayer-form__error {
+  font-family: var(--font-body);
+  font-size: clamp(13px, 3.2vw, 15px);
+  color: #b4442f;
+  text-align: right;
+}
+
+.prayer-form__submit {
+  min-height: clamp(48px, 12vw, 56px);
+  border-radius: var(--radius-pill);
+  background: var(--gradient-gold);
+  font-family: var(--font-body);
+  font-size: clamp(16px, 4vw, 19px);
+  color: var(--color-navy-deep);
+  transition: filter 200ms ease-out;
+}
+
+.prayer-form__submit:hover,
+.prayer-form__submit:focus-visible {
+  filter: brightness(1.04);
+}
+
+.prayer-form__success {
+  padding: clamp(16px, 4vw, 26px) 0;
+  text-align: right;
+}
+
+.prayer-form__success-title {
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-size: clamp(17px, 4.2vw, 21px);
+  color: var(--color-navy);
+}
+
+.prayer-form__success-text {
+  margin-top: 8px;
+  font-family: var(--font-body);
+  font-size: clamp(14px, 3.4vw, 16px);
+  line-height: 1.5;
+  color: var(--color-navy);
+}
+
+/* Touch-friendly fields on phones and tablets. */
+@media (max-width: 1023px) {
+  .prayer-form__input {
+    height: 44px;
+  }
+
+  .prayer-form__remove {
+    width: 40px;
+    height: 40px;
+  }
+
+  .prayer-form__index {
+    width: 30px;
+    height: 30px;
+    margin-bottom: 8px;
+  }
+
+  .prayer-form__index--plus {
+    margin-bottom: 0;
+  }
+}
+
+/* Very narrow phones: the two fields stack rather than squeeze. */
+@media (max-width: 420px) {
+  .prayer-form__row {
+    flex-wrap: wrap;
+  }
+
+  .prayer-form__field {
+    flex-basis: 100%;
+  }
+}

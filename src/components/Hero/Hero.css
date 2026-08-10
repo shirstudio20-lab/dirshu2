@@ -1,0 +1,113 @@
+.hero {
+  /* Only visible past 1920px, where the canvas stops growing. */
+  background: #03101f;
+}
+
+/* Node 52:1249 — 1918 × 1080 at (1, 0). The film is laid over the still in
+   exactly the same box, so the two are interchangeable. */
+.hero__backdrop {
+  position: absolute;
+  left: 1px;
+  top: 0;
+  width: 1918px;
+  height: 1080px;
+  object-fit: cover;
+  /* The building is part of the plate, so it is brought forward by pushing
+     into the frame from the left edge: bigger house, anchored left, a little
+     of it running past the edge, and less sky above the roof. Uniform scale,
+     so nothing is stretched. */
+  transform-origin: left center;
+  transform: scale(1.55) translate(-17%, -4.5%);
+}
+
+.hero__backdrop--film {
+  /* Over the still, under the header and the copy. */
+  z-index: 0;
+}
+
+/* Node 52:1266 — 657 × 492 at (1103, 311); column, 41px gap, aligned to the
+   start of the RTL flow (the right edge of the block). */
+.hero__content {
+  position: absolute;
+  left: 1103px;
+  top: 311px;
+  width: 657px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 41px;
+  z-index: 1;
+}
+
+/* Node 52:1267 — Levi Bold 130px, two lines, line-height 1. */
+.hero__title {
+  display: flex;
+  flex-direction: column;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: var(--text-hero);
+  line-height: 1;
+  color: var(--color-white);
+  text-align: right;
+  white-space: nowrap;
+}
+
+/* Node 52:1268 — Atlas Regular 23px / 1.4, justified, 626px wide. */
+.hero__lede {
+  width: 626px;
+  font-family: var(--font-body);
+  font-weight: 400;
+  font-size: var(--text-hero-body);
+  line-height: 1.4;
+  color: var(--color-white);
+  text-align: justify;
+}
+
+/* --- below 1024px -------------------------------------------------------- */
+
+@media (max-width: 1023px) {
+  .hero {
+    display: flex;
+    align-items: flex-end;
+    min-height: 100svh;
+    overflow: hidden;
+  }
+
+  /* Tablet: the same left-anchored framing, eased off a little. */
+  .hero__backdrop {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-position: 12% 38%;
+    transform: scale(1.12);
+  }
+
+  .hero__content {
+    position: relative;
+    left: auto;
+    top: auto;
+    width: 100%;
+    padding: 0 clamp(16px, 5vw, 32px) clamp(48px, 11vh, 96px);
+    gap: clamp(16px, 4vw, 32px);
+  }
+
+  .hero__title {
+    font-size: clamp(40px, 7.6vw, 92px);
+  }
+
+  .hero__lede {
+    width: 100%;
+    max-width: 626px;
+    font-size: clamp(15px, 3.6vw, 21px);
+    text-align: right;
+  }
+}
+
+/* Phones: the house sits high and left, clear of the copy at the foot. */
+@media (max-width: 767px) {
+  .hero__backdrop {
+    object-position: 16% 34%;
+    transform: scale(1.04);
+  }
+}

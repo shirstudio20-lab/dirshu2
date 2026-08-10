@@ -1,0 +1,340 @@
+/* ---------------------------------------------------------------------------
+   The site's only header. It lives at the top of the app, outside every
+   scaled stage, so it can pin to the viewport on its own.
+
+   Every measurement is the Figma value written as `min(px, vw)`: at 1920 it
+   resolves to the exact canvas number, below that it shrinks by the same ratio
+   the hero canvas does, and past 1920 it caps — so it looks identical to when
+   it was drawn inside the hero.
+   --------------------------------------------------------------------------- */
+
+.site-header {
+  position: absolute;
+  inset: 0 0 auto 0;
+  height: min(195px, 10.156vw);
+  z-index: 50;
+}
+
+/* Desktop keeps the three Figma groups where the canvas puts them. */
+.site-header__panel {
+  display: contents;
+}
+
+.site-header__toggle {
+  display: none;
+}
+
+/* Node 52:1250 — 327 × 54 at (67, 48); pill then language, left to right. */
+.site-header__utility {
+  position: absolute;
+  left: min(67px, 3.49vw);
+  top: min(48px, 2.5vw);
+  display: flex;
+  direction: ltr;
+  align-items: center;
+  gap: min(16px, 0.833vw);
+}
+
+.site-header .pill-button {
+  width: min(231px, 12.031vw);
+  height: min(54px, 2.813vw);
+  padding: min(10px, 0.52vw);
+}
+
+.site-header .pill-button__label {
+  font-size: min(18px, 0.938vw);
+}
+
+/* Node 52:1253 — 80 × 44, flag on the left, label on the right. */
+.language-switcher {
+  display: flex;
+  direction: ltr;
+  align-items: center;
+  justify-content: space-between;
+  width: min(80px, 4.167vw);
+  height: min(44px, 2.292vw);
+  flex-shrink: 0;
+  padding: 0;
+}
+
+.language-switcher__flag {
+  display: block;
+  width: min(44px, 2.292vw);
+  height: min(44px, 2.292vw);
+  flex-shrink: 0;
+}
+
+.language-switcher__flag img {
+  width: 100%;
+  height: 100%;
+}
+
+.language-switcher__label {
+  font-family: var(--font-body);
+  font-weight: 400;
+  font-size: min(20px, 1.042vw);
+  line-height: normal;
+  color: var(--color-white);
+  white-space: nowrap;
+}
+
+/* Node 52:1256 — 930 × 24 at (753, 63); right edge at 1683. */
+.site-header__nav {
+  position: absolute;
+  right: min(237px, 12.344vw);
+  top: min(63px, 3.281vw);
+}
+
+.nav-menu {
+  display: flex;
+  align-items: center;
+  gap: min(24px, 1.25vw);
+}
+
+.nav-menu__item {
+  flex-shrink: 0;
+}
+
+.nav-menu__link {
+  position: relative;
+  font-family: var(--font-body);
+  font-weight: 400;
+  font-size: min(20px, 1.042vw);
+  line-height: normal;
+  color: var(--color-white);
+  white-space: nowrap;
+  transition: color 280ms ease-out;
+}
+
+.nav-menu__link:hover,
+.nav-menu__link:focus-visible {
+  color: var(--color-gold-light);
+}
+
+/* Hover underline — grows out from the centre, clear of the baseline so the
+   text never moves and the header keeps its height. */
+.nav-menu__link::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  bottom: -6px;
+  width: 0;
+  height: 1.5px;
+  background: linear-gradient(to right, var(--color-gold), var(--color-gold-light), var(--color-gold));
+  border-radius: 2px;
+  opacity: 0;
+  transform: translateX(-50%);
+  transition: width 280ms cubic-bezier(0.22, 0.61, 0.36, 1), opacity 280ms ease-out;
+}
+
+.nav-menu__link:hover::after,
+.nav-menu__link:focus-visible::after {
+  width: 100%;
+  opacity: 1;
+}
+
+/* Node 52:1265 — 122 × 163 at (1719, 32); right inset 79. */
+.site-header__crest {
+  position: absolute;
+  right: min(79px, 4.114vw);
+  top: min(32px, 1.667vw);
+  width: min(122px, 6.354vw);
+  aspect-ratio: 122 / 163;
+}
+
+.site-header__crest img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+/* Everything that changes between the two states eases, so the header
+   compacts rather than swapping. */
+.site-header,
+.site-header__crest,
+.site-header__nav,
+.site-header__utility {
+  transition:
+    height 320ms cubic-bezier(0.22, 0.61, 0.36, 1),
+    width 320ms cubic-bezier(0.22, 0.61, 0.36, 1),
+    top 320ms cubic-bezier(0.22, 0.61, 0.36, 1),
+    background-color 320ms ease-out;
+}
+
+/* --- scrolled state ------------------------------------------------------- */
+
+/* The same element: it stops scrolling with the page, gains the navy bar and
+   compacts. Nothing reorders — crest, navigation and call to action keep the
+   sides they were on, only tighter. */
+.site-header.is-stuck {
+  position: fixed;
+  height: clamp(56px, 3.33vw, 64px);
+  background: #06112d;
+  border-bottom: 0;
+  /* Completely flat: no shadow, no glow, no blur. */
+  box-shadow: none;
+  filter: none;
+  -webkit-backdrop-filter: none;
+  backdrop-filter: none;
+  z-index: 80;
+}
+
+/* Scaled to the slimmer bar; it still passes the lower edge, but only just. */
+.site-header.is-stuck .site-header__crest {
+  top: clamp(3px, 0.21vw, 4px);
+  width: clamp(54px, 3.7vw, 71px);
+  box-shadow: none;
+  filter: none;
+}
+
+.site-header.is-stuck .site-header__crest img {
+  box-shadow: none;
+  filter: none;
+}
+
+.site-header.is-stuck .site-header__nav {
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.site-header.is-stuck .site-header__utility {
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+/* --- below 1024px: bar + drop-down panel --------------------------------- */
+
+@media (max-width: 1023px) {
+  .site-header {
+    height: auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: clamp(10px, 2.5vw, 18px) clamp(16px, 5vw, 32px);
+  }
+
+  .site-header.is-stuck {
+    height: auto;
+    padding: clamp(8px, 2vw, 14px) clamp(16px, 5vw, 32px);
+  }
+
+  .site-header__crest {
+    position: static;
+    width: clamp(52px, 13vw, 76px);
+  }
+
+  .site-header.is-stuck .site-header__crest {
+    width: clamp(52px, 13vw, 76px);
+  }
+
+  .site-header__toggle {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 5px;
+    width: 44px;
+    height: 44px;
+    padding: 0 8px;
+  }
+
+  .site-header__toggle span {
+    display: block;
+    height: 2px;
+    background: var(--color-white);
+    transition: transform 240ms ease-out, opacity 160ms ease-out;
+  }
+
+  .site-header.is-open .site-header__toggle span:nth-child(1) {
+    transform: translateY(7px) rotate(45deg);
+  }
+
+  .site-header.is-open .site-header__toggle span:nth-child(2) {
+    opacity: 0;
+  }
+
+  .site-header.is-open .site-header__toggle span:nth-child(3) {
+    transform: translateY(-7px) rotate(-45deg);
+  }
+
+  .site-header__panel {
+    display: block;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 100%;
+    padding: clamp(16px, 5vw, 28px) clamp(16px, 5vw, 32px) clamp(22px, 6vw, 32px);
+    /* Same flat navy as the bar, so the whole sticky header reads as one colour. */
+    background: #06112d;
+    box-shadow: none;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-10px);
+    transition: opacity 200ms ease-out, transform 200ms ease-out, visibility 200ms;
+  }
+
+  .site-header.is-open .site-header__panel {
+    opacity: 1;
+    visibility: visible;
+    transform: none;
+  }
+
+  .site-header__nav,
+  .site-header.is-stuck .site-header__nav {
+    position: static;
+  }
+
+  .nav-menu {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: clamp(12px, 3.5vw, 18px);
+  }
+
+  .nav-menu__link {
+    font-size: clamp(16px, 4.2vw, 20px);
+  }
+
+  /* No hover on touch — the underline would stick after a tap. */
+  .nav-menu__link::after {
+    display: none;
+  }
+
+  .site-header__utility,
+  .site-header.is-stuck .site-header__utility {
+    position: static;
+    margin-top: clamp(18px, 5vw, 26px);
+    flex-wrap: wrap;
+    gap: clamp(14px, 4vw, 20px);
+  }
+
+  .site-header .pill-button {
+    width: clamp(200px, 56vw, 231px);
+    height: clamp(46px, 12vw, 54px);
+  }
+
+  .site-header .pill-button__label {
+    font-size: clamp(15px, 3.6vw, 18px);
+  }
+
+  .language-switcher {
+    width: 80px;
+    height: 44px;
+  }
+
+  .language-switcher__flag {
+    width: 44px;
+    height: 44px;
+  }
+
+  .language-switcher__label {
+    font-size: 20px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .site-header,
+  .site-header__crest,
+  .site-header__nav,
+  .site-header__utility {
+    transition: none;
+  }
+}

@@ -1,0 +1,38 @@
+/* Design tokens — values taken verbatim from the Figma file
+   "דרשו" (481GWANJjkyJOCGlGzQjwS), frame 52:1236. */
+
+:root {
+  /* ---- Canvas ---------------------------------------------------- */
+  --design-width: 1920px;
+
+  /* ---- Color ----------------------------------------------------- */
+  --color-page: #f7f1e0; /* frame background, sections 1–2 */
+  --color-gold: #9a805b; /* headings, progress, gradient end */
+  --color-gold-light: #ecd8b9; /* gradient start */
+  --color-navy: #0d3167; /* stage headings */
+  --color-navy-deep: #071b34; /* text on gold buttons */
+  --color-white: #ffffff;
+  --color-black: #000000;
+  --color-note: #8c8c8c; /* designer annotations */
+  --color-muted: #969696; /* "04" in the step counter */
+  --color-track: #9e9e9e; /* progress track */
+  --color-ring: #dbc29d; /* stroke around the active thumbnail (52:1285) */
+
+  /* ---- Typography ------------------------------------------------ */
+  --font-display: 'Levi DL v1 AAA', 'Frank Ruhl Libre', 'David Libre', serif;
+  --font-body: 'Atlas DL 3.1 AAA', 'Heebo', 'Assistant', sans-serif;
+
+  --text-hero: 130px;
+  --text-section-title: 80px;
+  --text-stage-title: 35px;
+  --text-stage-subtitle: 24px;
+  --text-nav: 20px;
+  --text-lang: 20px;
+  --text-button: 18px;
+  --text-hero-body: 23px;
+  --text-body: 22px;
+
+  /* ---- Shape ----------------------------------------------------- */
+  --radius-pill: 50px;
+  --gradient-gold: linear-gradient(to right, var(--color-gold-light), var(--color-gold));
+}

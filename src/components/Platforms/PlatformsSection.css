@@ -1,0 +1,200 @@
+/* ---------------------------------------------------------------------------
+   Closing section — listening platforms, verse and footer.
+   Fluid throughout: no fixed canvas, sizes from clamp() and vw.
+   --------------------------------------------------------------------------- */
+
+.platforms {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  background: #041531;
+}
+
+/* Deep navy with a soft blue light rising from the lower middle, as in the
+   reference — never a flat blue, never bright enough to fight the content. */
+.platforms__background {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(
+      ellipse 58% 62% at 50% 72%,
+      rgba(23, 74, 158, 0.55) 0%,
+      rgba(11, 38, 88, 0.32) 42%,
+      rgba(4, 21, 49, 0) 76%
+    ),
+    radial-gradient(ellipse 90% 70% at 50% 100%, rgba(9, 32, 74, 0.7) 0%, rgba(4, 21, 49, 0) 70%),
+    linear-gradient(to bottom, #04122b 0%, #061a3c 52%, #030d20 100%);
+}
+
+.platforms__content {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: clamp(54px, 6.7vw, 129px) clamp(16px, 4vw, 48px) clamp(48px, 6vw, 115px);
+}
+
+/* Node 52:1305 */
+.platforms__heading {
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-size: clamp(19px, 2.08vw, 40px);
+  line-height: 1.4;
+  color: var(--color-white);
+  text-align: center;
+}
+
+/* --- logos, node 52:1307 -------------------------------------------------- */
+
+.platforms__list {
+  /* Left to right, matching the order in the design. */
+  direction: ltr;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(14px, 1.12vw, 21.3px);
+  margin-top: clamp(28px, 3.6vw, 69px);
+}
+
+.platforms__item {
+  width: clamp(72px, 7.86vw, 151px);
+  aspect-ratio: 1;
+  flex-shrink: 0;
+}
+
+/* A true circle: the square corners of the file can never show, whatever the
+   asset. The white disc and its inner spacing are part of the artwork, so the
+   logo fills the circle without being stretched. */
+.platforms__button {
+  display: block;
+  width: 100%;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  overflow: hidden;
+  cursor: pointer;
+  transition:
+    transform 260ms cubic-bezier(0.22, 0.61, 0.36, 1),
+    box-shadow 260ms ease-out;
+}
+
+.platforms__button img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  border-radius: 50%;
+}
+
+a.platforms__button:hover,
+a.platforms__button:focus-visible {
+  transform: scale(1.04);
+  box-shadow: 0 8px 26px rgba(6, 26, 60, 0.55), 0 0 0 6px rgba(236, 216, 185, 0.14);
+}
+
+/* --- verse, nodes 52:1327–52:1329 ---------------------------------------- */
+
+.platforms__quote {
+  margin-top: clamp(36px, 5vw, 96px);
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(19px, 2.4vw, 46px);
+  line-height: 1.5;
+  text-align: center;
+  background: linear-gradient(to right, var(--color-gold-light), var(--color-gold));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* The rules either side of the first line. */
+.platforms__quote-line {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(14px, 1.8vw, 34px);
+}
+
+.platforms__quote-line::before,
+.platforms__quote-line::after {
+  content: '';
+  height: 1px;
+  width: clamp(40px, 14.1vw, 271px);
+  flex-shrink: 1;
+  background: linear-gradient(to right, rgba(236, 216, 185, 0) 0%, rgba(236, 216, 185, 0.55) 100%);
+}
+
+.platforms__quote-line::after {
+  background: linear-gradient(to left, rgba(236, 216, 185, 0) 0%, rgba(236, 216, 185, 0.55) 100%);
+}
+
+/* --- footer, nodes 52:1248 / 52:1306 ------------------------------------- */
+
+.site-footer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: clamp(56px, 4.2vw, 81px);
+  padding: clamp(12px, 1vw, 18px) clamp(16px, 4vw, 48px);
+  background: #01060f;
+  border-top: 1px solid rgba(255, 255, 255, 0.07);
+}
+
+/* Designer credit: text and mark on one line, centred, understated. */
+.site-footer__credit {
+  display: inline-flex;
+  align-items: center;
+  gap: clamp(8px, 0.6vw, 12px);
+  font-family: var(--font-body);
+  font-weight: 400;
+  font-size: clamp(12px, 0.83vw, 16px);
+  line-height: 1.2;
+  color: rgba(255, 255, 255, 0.62);
+  text-align: center;
+  transition: color 220ms ease-out, opacity 220ms ease-out;
+}
+
+.site-footer__credit img {
+  width: clamp(30px, 2.6vw, 44px);
+  height: auto;
+  opacity: 0.78;
+  transition: opacity 220ms ease-out;
+}
+
+.site-footer__credit:hover,
+.site-footer__credit:focus-visible {
+  color: rgba(255, 255, 255, 0.92);
+}
+
+.site-footer__credit:hover img,
+.site-footer__credit:focus-visible img {
+  opacity: 1;
+}
+
+/* --- responsive ----------------------------------------------------------- */
+
+/* Phones: three logos on the first row, two centred beneath them. */
+@media (max-width: 599px) {
+  /* All five stay on one line: the circles shrink, they never wrap. */
+  .platforms__list {
+    flex-wrap: nowrap;
+    gap: clamp(6px, 2vw, 14px);
+  }
+
+  .platforms__item {
+    width: clamp(48px, 15.5vw, 84px);
+  }
+
+  .platforms__quote-line::before,
+  .platforms__quote-line::after {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .platforms__item img {
+    transition: none;
+  }
+}

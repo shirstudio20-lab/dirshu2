@@ -1,0 +1,17 @@
+.scaled-stage {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+}
+
+.scaled-stage__canvas {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform-origin: top center;
+}
+
+.scaled-stage--fluid {
+  height: auto;
+  overflow-x: clip;
+}

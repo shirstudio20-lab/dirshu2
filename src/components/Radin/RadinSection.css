@@ -1,0 +1,212 @@
+/* ---------------------------------------------------------------------------
+   Section "חוזרים לראדין" — nodes 52:1241–52:1424.
+
+   Fluid: the backdrop spans the viewport, the films are sized from `vw`, and
+   the height comes from the content. On the canvas the centre film is
+   824.99 × 502 and the side films are the same at 0.697, 743 apart — those
+   ratios are what the variables below hold.
+   --------------------------------------------------------------------------- */
+
+.radin {
+  position: relative;
+  width: 100%;
+  max-width: none;
+  overflow: hidden;
+  background: #071426;
+
+  --film-width: clamp(300px, 43vw, 825px);
+  --film-scale: 0.697;
+  --film-pitch: calc(var(--film-width) * 0.901);
+}
+
+/* Its own layer, so the plate can be swapped without touching the content. */
+.radin__background {
+  position: absolute;
+  inset: 0;
+  background-image: url('/assets/radin-bg.jpg');
+  background-size: cover;
+  background-position: center;
+  pointer-events: none;
+}
+
+.radin__content {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: clamp(52px, 5.2vw, 100px) clamp(16px, 4vw, 48px) clamp(58px, 5.8vw, 110px);
+}
+
+/* Node 52:1272 — gradient fill clipped to the glyphs. */
+.radin__heading {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(30px, 4.74vw, 91px);
+  line-height: 1;
+  text-align: center;
+  background: linear-gradient(91.38deg, #ecd8b9 0.21%, #9a805b 140.28%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* Node 52:1330 */
+.radin__intro {
+  margin-top: clamp(12px, 1.3vw, 26px);
+  max-width: 46ch;
+  font-family: var(--font-body);
+  font-weight: 400;
+  font-size: clamp(14px, 1.56vw, 30px);
+  line-height: 1.2;
+  color: var(--color-white);
+  text-align: center;
+}
+
+/* --- carousel ------------------------------------------------------------- */
+
+/* The stage is exactly the active film's box; the neighbours are translated
+   out of it and clipped by the section. Sizing it with aspect-ratio keeps the
+   height correct however `--film-width` is expressed. */
+.radin__stage {
+  position: relative;
+  width: var(--film-width);
+  max-width: 100%;
+  aspect-ratio: 825 / 502;
+  margin-top: clamp(24px, 3vw, 58px);
+}
+
+.radin__slide {
+  position: absolute;
+  left: 50%;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: clamp(8px, 0.9vw, 16px);
+  overflow: hidden;
+  background: #0b1c33;
+  box-shadow: 0 18px 46px rgba(0, 0, 0, 0.42);
+  /* Later slides sit to the left: the reading direction of the site. */
+  transform: translateX(calc(-50% - var(--offset) * var(--film-pitch)))
+    scale(var(--film-scale));
+  opacity: 0.72;
+  transition:
+    transform 620ms cubic-bezier(0.22, 0.61, 0.36, 1),
+    opacity 620ms ease-out;
+}
+
+.radin__slide.is-active {
+  transform: translateX(-50%) scale(1);
+  opacity: 1;
+  z-index: 1;
+}
+
+.radin__player {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+/* Off centre: a poster and a play badge, no player and nothing loading. */
+.radin__poster {
+  display: block;
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  cursor: pointer;
+}
+
+.radin__poster img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.radin__play {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: clamp(44px, 4vw, 64px);
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: rgba(7, 20, 38, 0.62);
+  border: 1.5px solid rgba(255, 255, 255, 0.75);
+  color: var(--color-white);
+  pointer-events: none;
+}
+
+.radin__play svg {
+  width: 55%;
+  height: 55%;
+}
+
+/* --- dots, node 52:1424 --------------------------------------------------- */
+
+.radin__dots {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-top: clamp(22px, 2.6vw, 44px);
+}
+
+.radin__dot {
+  width: 11px;
+  height: 11px;
+  padding: 0;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.45);
+  cursor: pointer;
+  transition: width 300ms cubic-bezier(0.22, 0.61, 0.36, 1), background-color 300ms ease-out;
+}
+
+.radin__dot:hover {
+  background: rgba(255, 255, 255, 0.7);
+}
+
+.radin__dot.is-active {
+  width: 57px;
+  background: var(--color-white);
+}
+
+/* --- below 1024px --------------------------------------------------------- */
+
+@media (max-width: 1023px) {
+  .radin {
+    --film-width: min(100%, 620px);
+  }
+}
+
+/* One film at a time on a phone: the neighbours are pushed clear off screen. */
+@media (max-width: 767px) {
+  .radin {
+    --film-width: 100%;
+    --film-pitch: 100vw;
+  }
+
+  .radin__slide:not(.is-active) {
+    opacity: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .radin__slide,
+  .radin__dot {
+    transition: none;
+  }
+}
+
+/* Drag and swipe on the film stage. */
+.radin__stage {
+  cursor: grab;
+  touch-action: pan-y;
+}
+
+.radin__stage.is-grabbing {
+  cursor: grabbing;
+}

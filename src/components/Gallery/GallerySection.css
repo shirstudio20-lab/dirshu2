@@ -1,0 +1,359 @@
+/* ---------------------------------------------------------------------------
+   Section "ראדין בעין המצלמה" — vertical streams of photographs.
+   Fluid throughout: columns are grid fractions, sizes come from clamp().
+   --------------------------------------------------------------------------- */
+
+.gallery {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  background: var(--color-page);
+}
+
+/* Its own layer, so the cream can become a texture later. */
+.gallery__background {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse 70% 60% at 50% 40%, #fbf7ec 0%, var(--color-page) 68%);
+  pointer-events: none;
+}
+
+.gallery__content {
+  position: relative;
+  z-index: 1;
+  padding: clamp(48px, 5vw, 96px) clamp(12px, 2.4vw, 36px) clamp(40px, 4.4vw, 84px);
+}
+
+.gallery__heading {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(28px, 4.74vw, 91px);
+  line-height: 1;
+  color: var(--color-navy);
+  text-align: center;
+}
+
+/* --- columns -------------------------------------------------------------- */
+
+.gallery__columns {
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: 1fr;
+  gap: clamp(8px, 0.9vw, 16px);
+  /* Tall and immersive: most of the screen, with a floor for short windows
+     and a ceiling so it never runs away on a very tall monitor. */
+  height: clamp(560px, 88vh, 1180px);
+  margin-top: clamp(26px, 3vw, 56px);
+  /* The streams emerge from and vanish into the background rather than
+     meeting a hard line; the fades sit close to the very top and bottom so
+     the visible run stays long. */
+  -webkit-mask-image: linear-gradient(
+    to bottom,
+    transparent 0%,
+    #000 7%,
+    #000 94%,
+    transparent 100%
+  );
+  mask-image: linear-gradient(to bottom, transparent 0%, #000 7%, #000 94%, transparent 100%);
+}
+
+.gallery__column {
+  position: relative;
+  overflow: hidden;
+}
+
+.gallery__track {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(8px, 0.9vw, 16px);
+  will-change: transform;
+  /* Half the track is one full pass of the list, so the loop is seamless. */
+  animation: gallery-down var(--duration, 60s) linear infinite;
+}
+
+.gallery__column.is-up .gallery__track {
+  animation-name: gallery-up;
+}
+
+/* Hover pauses this column only, and it carries on from where it stopped. */
+.gallery__column:hover .gallery__track,
+.gallery__column:focus-within .gallery__track {
+  animation-play-state: paused;
+}
+
+@keyframes gallery-down {
+  from {
+    transform: translate3d(0, -50%, 0);
+  }
+  to {
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes gallery-up {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+  to {
+    transform: translate3d(0, -50%, 0);
+  }
+}
+
+/* --- items ---------------------------------------------------------------- */
+
+.gallery__item {
+  position: relative;
+  display: block;
+  width: 100%;
+  padding: 0;
+  border-radius: clamp(8px, 0.7vw, 14px);
+  overflow: hidden;
+  cursor: pointer;
+  flex-shrink: 0;
+  background: #e8e2d3;
+}
+
+/* Three card proportions give the columns a rhythm without any image being
+   stretched: the frame is set, the photograph is cropped to fill it. */
+.gallery__item--tall {
+  aspect-ratio: 3 / 4;
+}
+
+.gallery__item--medium {
+  aspect-ratio: 4 / 3;
+}
+
+.gallery__item--small {
+  aspect-ratio: 3 / 2;
+}
+
+.gallery__item img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  /* Slightly above centre — faces sit in the upper half of these frames. */
+  object-position: center 38%;
+  transition: transform 500ms cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+
+.gallery__item:hover img,
+.gallery__item:focus-visible img {
+  transform: scale(1.04);
+}
+
+.gallery__overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(8px, 0.8vw, 14px);
+  padding: clamp(10px, 1vw, 18px);
+  background: linear-gradient(to top, rgba(4, 18, 44, 0.82) 0%, rgba(7, 27, 52, 0.42) 100%);
+  opacity: 0;
+  transition: opacity 280ms ease-out;
+}
+
+.gallery__item:hover .gallery__overlay,
+.gallery__item:focus-visible .gallery__overlay {
+  opacity: 1;
+}
+
+.gallery__zoom {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: clamp(34px, 2.4vw, 44px);
+  aspect-ratio: 1;
+  border-radius: 50%;
+  border: 1.4px solid rgba(255, 255, 255, 0.8);
+  color: var(--color-white);
+}
+
+.gallery__zoom svg {
+  width: 55%;
+  height: 55%;
+}
+
+.gallery__title {
+  font-family: var(--font-body);
+  font-weight: 500;
+  font-size: clamp(12px, 0.95vw, 17px);
+  line-height: 1.3;
+  color: var(--color-white);
+  text-align: center;
+}
+
+/* --- lightbox ------------------------------------------------------------- */
+
+.lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 120;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: clamp(12px, 3vw, 40px);
+  background: rgba(3, 11, 30, 0.88);
+  animation: lightbox-in 200ms ease-out;
+}
+
+.lightbox__panel {
+  position: relative;
+  max-width: min(1100px, 100%);
+  max-height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.lightbox__figure {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: clamp(10px, 1.4vw, 18px);
+  max-height: 100%;
+}
+
+.lightbox__figure img {
+  max-width: 100%;
+  max-height: calc(100dvh - clamp(120px, 16vh, 200px));
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  border-radius: clamp(8px, 0.7vw, 14px);
+  box-shadow: 0 24px 70px rgba(0, 0, 0, 0.5);
+}
+
+.lightbox__caption {
+  font-family: var(--font-body);
+  font-weight: 500;
+  font-size: clamp(14px, 1.1vw, 20px);
+  color: var(--color-white);
+  text-align: center;
+}
+
+.lightbox__close {
+  position: absolute;
+  left: 0;
+  top: clamp(-46px, -3vw, -38px);
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  color: var(--color-white);
+  opacity: 0.8;
+  transition: opacity 200ms ease-out, background-color 200ms ease-out;
+}
+
+.lightbox__close:hover,
+.lightbox__close:focus-visible {
+  opacity: 1;
+  background: rgba(255, 255, 255, 0.12);
+}
+
+.lightbox__close svg {
+  width: 20px;
+  height: 20px;
+}
+
+.lightbox__nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: clamp(40px, 3.2vw, 52px);
+  aspect-ratio: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  border: 1.4px solid rgba(255, 255, 255, 0.4);
+  background: rgba(3, 11, 30, 0.5);
+  color: var(--color-white);
+  opacity: 0.85;
+  transition: opacity 200ms ease-out, border-color 200ms ease-out;
+}
+
+.lightbox__nav:hover,
+.lightbox__nav:focus-visible {
+  opacity: 1;
+  border-color: rgba(255, 255, 255, 0.8);
+}
+
+.lightbox__nav svg {
+  width: 50%;
+  height: 50%;
+}
+
+/* RTL: "next" sits on the left, "previous" on the right. */
+.lightbox__nav--next {
+  left: clamp(-58px, -3.6vw, -6px);
+}
+
+.lightbox__nav--previous {
+  right: clamp(-58px, -3.6vw, -6px);
+}
+
+@keyframes lightbox-in {
+  from {
+    opacity: 0;
+  }
+}
+
+/* --- responsive ----------------------------------------------------------- */
+
+@media (max-width: 1023px) {
+  .gallery__columns {
+    height: clamp(500px, 82vh, 900px);
+  }
+}
+
+@media (max-width: 639px) {
+  .gallery__columns {
+    height: clamp(420px, 76vh, 720px);
+  }
+
+  /* No hover on touch: the caption lives in the lightbox instead. */
+  .gallery__overlay {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  /* A plain responsive grid, with the tap and lightbox intact. */
+  .gallery__columns {
+    display: grid;
+    grid-auto-flow: row;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    height: auto;
+    -webkit-mask-image: none;
+    mask-image: none;
+  }
+
+  .gallery__column {
+    display: contents;
+  }
+
+  .gallery__track {
+    display: contents;
+    animation: none;
+  }
+
+  /* The list is carried twice for the loop; only show it once when still. */
+  .gallery__item[data-duplicate] {
+    display: none;
+  }
+
+  .gallery__item img,
+  .gallery__overlay {
+    transition: none;
+  }
+
+  .lightbox {
+    animation: none;
+  }
+}

@@ -1,0 +1,398 @@
+/* ---------------------------------------------------------------------------
+   Section 2 — "מתורתו אנו חיים".
+   Coordinates are Figma values on the 1920 canvas, rebased so that the top of
+   the section (canvas y = 1080) is y = 0.
+
+   State changes are instant by design: no fade, no crossfade, no dimming —
+   the inactive states are simply not rendered.
+   --------------------------------------------------------------------------- */
+
+.torah-stages {
+  position: relative;
+  background: var(--color-page);
+}
+
+/* One viewport tall, with the canvas centred inside it — a shorter pinned box
+   would leave an empty band of page below the content while pinned. */
+.torah-stages__sticky {
+  position: sticky;
+  top: 0;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+}
+
+/* Node 52:1289 */
+.torah-stages__heading {
+  position: absolute;
+  left: 686px;
+  top: 74px;
+  width: 514px;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: var(--text-section-title);
+  line-height: 1.2;
+  color: var(--color-gold);
+  text-align: right;
+  white-space: nowrap;
+}
+
+/* --- stage artwork, node 52:1280 ----------------------------------------- */
+
+.stage-visual-frame {
+  display: contents;
+}
+
+.stage-visual {
+  position: absolute;
+  left: 1286.51px;
+  top: 48px;
+  width: 454.978px;
+  height: 693px;
+}
+
+/* Node 52:1281 — the cover is the constant of the section. */
+.stage-visual__cover {
+  position: absolute;
+  left: 65.236px;
+  top: 0;
+  width: 387.354px;
+  height: 669.547px;
+  overflow: hidden;
+}
+
+.stage-visual__cover-image {
+  position: absolute;
+  left: -4.1%;
+  top: -5.23%;
+  width: 109.16%;
+  height: 106.24%;
+}
+
+.stage-visual__state {
+  position: absolute;
+  inset: 0;
+  display: none;
+}
+
+.stage-visual__state.is-active {
+  display: block;
+}
+
+.stage-visual__lettering,
+.stage-visual__book {
+  position: absolute;
+}
+
+.stage-visual__lettering img,
+.stage-visual__book img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* --- copy column, right edge pinned to x = 1200 -------------------------- */
+
+.stage-copy {
+  position: absolute;
+  left: 593px;
+  top: 278px;
+  width: 607px;
+  height: 340px;
+}
+
+.stage-copy__state {
+  display: none;
+  width: 100%;
+  text-align: right;
+}
+
+.stage-copy__state.is-active {
+  display: block;
+}
+
+/* Node 52:1290 */
+.stage-copy__date {
+  font-family: var(--font-body);
+  font-weight: 400;
+  font-size: var(--text-body);
+  line-height: 1.2;
+  color: var(--color-navy);
+}
+
+/* Node 52:1279 */
+.stage-copy__title {
+  margin-top: 10.6px;
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-size: var(--text-stage-title);
+  line-height: 1.2;
+  color: var(--color-navy);
+}
+
+/* Node 52:1277 — one <span> per line break in the design. */
+.stage-copy__subtitle {
+  display: flex;
+  flex-direction: column;
+  margin-top: 15px;
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-size: var(--text-stage-subtitle);
+  line-height: 1.4;
+  color: var(--color-navy);
+}
+
+/* Node 52:1276 */
+.stage-copy__body {
+  margin-top: 48.8px;
+  font-family: var(--font-body);
+  font-weight: 400;
+  font-size: var(--text-body);
+  line-height: 1.4;
+  color: var(--color-black);
+}
+
+/* --- rail, nodes 52:1285–52:1288 + 52:1297 ------------------------------- */
+
+.stage-rail {
+  position: absolute;
+  left: 216.905px;
+  top: 274px;
+  width: 69.191px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15.25px;
+}
+
+.stage-rail__item {
+  width: 56.221px;
+  height: 56.221px;
+  flex-shrink: 0;
+}
+
+/* Node 52:1285 — 69.191px with a 4.705px stroke sitting outside the circle. */
+.stage-rail__item.is-active {
+  width: 69.191px;
+  height: 69.191px;
+  margin-block: 8.05px;
+}
+
+.stage-rail__button {
+  position: relative;
+  display: block;
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  border-radius: 50%;
+}
+
+.stage-rail__button img {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.stage-rail__item.is-active .stage-rail__button {
+  box-shadow: 0 0 0 4.705px var(--color-ring);
+}
+
+/* Node 52:1297 — the hairline circle inside the active thumbnail. */
+.stage-rail__hairline {
+  position: absolute;
+  left: 2.029px;
+  top: 2.354px;
+  width: 65.133px;
+  height: 64.349px;
+  border: 0.392px solid var(--color-gold);
+  border-radius: 50%;
+  display: none;
+}
+
+.stage-rail__item.is-active .stage-rail__hairline {
+  display: block;
+}
+
+/* --- counter, node 52:1278 ----------------------------------------------- */
+
+.stage-counter {
+  position: absolute;
+  left: 219.415px;
+  top: 638px;
+  width: 118px;
+  height: 86px;
+}
+
+.stage-counter__value {
+  display: none;
+  font-family: var(--font-body);
+  line-height: 1.3;
+  text-align: right;
+  white-space: nowrap;
+}
+
+.stage-counter__value.is-active {
+  display: block;
+}
+
+.stage-counter__current,
+.stage-counter__slash {
+  font-weight: 700;
+  color: var(--color-gold);
+}
+
+.stage-counter__current {
+  font-size: 66.526px;
+}
+
+.stage-counter__slash {
+  font-size: 39.915px;
+}
+
+.stage-counter__total {
+  font-weight: 300;
+  font-size: 26.61px;
+  color: var(--color-muted);
+}
+
+/* --- progress, node 52:1291 ---------------------------------------------- */
+
+.stage-progress {
+  position: absolute;
+  left: 365px;
+  top: 700px;
+  width: 851px;
+  height: 2.7875px;
+}
+
+/* Line 52:1292 */
+.stage-progress__track {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 0.929px;
+  background: var(--color-track);
+}
+
+/* Line 52:1293 */
+.stage-progress__run {
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 2.7875px;
+  background: var(--color-gold);
+}
+
+/* --- below 1024px: the composition stacks -------------------------------- */
+
+@media (max-width: 1023px) {
+  .torah-stages__sticky .scaled-stage--fluid {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: clamp(8px, 1.6vh, 18px);
+    padding: clamp(4px, 1.2vh, 12px) clamp(16px, 5vw, 32px) clamp(10px, 2vh, 20px);
+  }
+
+  .torah-stages__heading {
+    position: static;
+    width: auto;
+    font-size: clamp(28px, 5.2vw, 56px);
+    text-align: center;
+  }
+
+  .stage-visual-frame {
+    display: block;
+    position: relative;
+    flex-shrink: 0;
+    width: calc(454.978px * var(--visual-scale, 1));
+    height: calc(693px * var(--visual-scale, 1));
+  }
+
+  .stage-visual {
+    position: absolute;
+    left: 0;
+    top: 0;
+    transform: scale(var(--visual-scale, 1));
+    transform-origin: top left;
+  }
+
+  .stage-copy {
+    position: static;
+    width: 100%;
+    max-width: 560px;
+    height: auto;
+  }
+
+  .stage-copy__date {
+    font-size: clamp(13px, 3.2vw, 18px);
+  }
+
+  .stage-copy__title {
+    margin-top: 6px;
+    font-size: clamp(19px, 5vw, 30px);
+  }
+
+  .stage-copy__subtitle {
+    margin-top: 8px;
+    font-size: clamp(15px, 3.8vw, 21px);
+  }
+
+  .stage-copy__body {
+    margin-top: 14px;
+    font-size: clamp(13px, 3.2vw, 18px);
+  }
+
+  .stage-rail {
+    position: static;
+    width: auto;
+    flex-direction: row;
+    gap: clamp(10px, 3vw, 18px);
+  }
+
+  /* Touch targets, so the rail stays tappable on a phone. */
+  .stage-rail__item {
+    width: clamp(40px, 10vw, 48px);
+    height: clamp(40px, 10vw, 48px);
+  }
+
+  .stage-rail__item.is-active {
+    width: clamp(48px, 12.5vw, 60px);
+    height: clamp(48px, 12.5vw, 60px);
+    margin-block: 0;
+  }
+
+  .stage-rail__item.is-active .stage-rail__button {
+    box-shadow: 0 0 0 3px var(--color-ring);
+  }
+
+  .stage-rail__hairline {
+    display: none !important;
+  }
+
+  .stage-counter {
+    position: static;
+    width: auto;
+    height: auto;
+  }
+
+  .stage-counter__current {
+    font-size: clamp(30px, 8vw, 44px);
+  }
+
+  .stage-counter__slash {
+    font-size: clamp(18px, 4.8vw, 26px);
+  }
+
+  .stage-counter__total {
+    font-size: clamp(12px, 3.2vw, 18px);
+  }
+
+  /* The progress line is not legible at this size; the counter carries it. */
+  .stage-progress {
+    display: none;
+  }
+}
