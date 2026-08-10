@@ -133,7 +133,8 @@
       #03101f 100%
     );
     /* Clear of the header bar, which floats over the section. */
-    padding-top: clamp(86px, 26vw, 124px);
+    /* Exactly the bar height, so the film begins where the bar ends. */
+    padding-top: clamp(62px, 18.4vw, 92px);
   }
 
   /* A real box now: the whole frame is shown rather than cropped, so the
@@ -164,26 +165,24 @@
     transform: none;
     /* Dissolves into the background instead of ending on a straight edge:
        solid through the middle, gone by the last pixel at either end. */
+    /* Softened at the foot only. The top meets the bar as a clean edge —
+       a fade there just showed the join between film and background. */
     -webkit-mask-image: linear-gradient(
       to bottom,
-      transparent 0%,
-      rgba(0, 0, 0, 0.55) 7%,
-      #000 17%,
-      #000 54%,
-      rgba(0, 0, 0, 0.82) 72%,
-      rgba(0, 0, 0, 0.42) 86%,
-      rgba(0, 0, 0, 0.12) 95%,
+      #000 0%,
+      #000 56%,
+      rgba(0, 0, 0, 0.82) 73%,
+      rgba(0, 0, 0, 0.4) 87%,
+      rgba(0, 0, 0, 0.1) 95%,
       transparent 100%
     );
     mask-image: linear-gradient(
       to bottom,
-      transparent 0%,
-      rgba(0, 0, 0, 0.55) 7%,
-      #000 17%,
-      #000 54%,
-      rgba(0, 0, 0, 0.82) 72%,
-      rgba(0, 0, 0, 0.42) 86%,
-      rgba(0, 0, 0, 0.12) 95%,
+      #000 0%,
+      #000 56%,
+      rgba(0, 0, 0, 0.82) 73%,
+      rgba(0, 0, 0, 0.4) 87%,
+      rgba(0, 0, 0, 0.1) 95%,
       transparent 100%
     );
   }
