@@ -546,7 +546,8 @@ a.branch-card__text:focus-visible {
   }
 
   .branch-card__row {
-    min-height: 34px;
+    min-height: 0;
+    line-height: 1.25;
   }
 }
 

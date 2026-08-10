@@ -123,8 +123,9 @@
        where the copy sits, so the letterboxed frame has no visible seam. */
     background: linear-gradient(
       180deg,
-      #16293e 0%,
-      #14273c 16%,
+      #06112d 0%,
+      #0b1a2f 9%,
+      #14273c 20%,
       #101f33 34%,
       #0a1728 56%,
       #061323 76%,
@@ -145,7 +146,7 @@
     position: relative;
     flex: 0 0 auto;
     width: 100%;
-    height: clamp(240px, 41svh, 450px);
+    height: clamp(270px, 47svh, 500px);
     overflow: hidden;
   }
 
@@ -155,7 +156,7 @@
        than a touch to the right of it. */
     /* Pushed down inside its frame: more sky above the roof, less empty
        pavement below, so the building sits lower rather than against the bar. */
-    inset: auto auto -20% -7%;
+    inset: auto auto -30% -7%;
     width: 215%;
     height: auto;
     object-fit: contain;
