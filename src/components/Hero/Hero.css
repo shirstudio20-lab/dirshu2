@@ -167,23 +167,28 @@
        solid through the middle, gone by the last pixel at either end. */
     /* Softened at the foot only. The top meets the bar as a clean edge —
        a fade there just showed the join between film and background. */
+    /* Softened at the foot only, and it has to reach zero before the frame
+       is clipped: the film is pushed 22% below the box, so the fade ends at
+       82% of its height — the last row that is actually on screen. */
     -webkit-mask-image: linear-gradient(
       to bottom,
       #000 0%,
-      #000 56%,
-      rgba(0, 0, 0, 0.82) 73%,
-      rgba(0, 0, 0, 0.4) 87%,
-      rgba(0, 0, 0, 0.1) 95%,
-      transparent 100%
+      #000 38%,
+      rgba(0, 0, 0, 0.86) 52%,
+      rgba(0, 0, 0, 0.55) 63%,
+      rgba(0, 0, 0, 0.25) 71%,
+      rgba(0, 0, 0, 0.07) 77%,
+      transparent 82%
     );
     mask-image: linear-gradient(
       to bottom,
       #000 0%,
-      #000 56%,
-      rgba(0, 0, 0, 0.82) 73%,
-      rgba(0, 0, 0, 0.4) 87%,
-      rgba(0, 0, 0, 0.1) 95%,
-      transparent 100%
+      #000 38%,
+      rgba(0, 0, 0, 0.86) 52%,
+      rgba(0, 0, 0, 0.55) 63%,
+      rgba(0, 0, 0, 0.25) 71%,
+      rgba(0, 0, 0, 0.07) 77%,
+      transparent 82%
     );
   }
 
