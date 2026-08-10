@@ -237,17 +237,29 @@
     position: static;
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    width: min(70%, 280px);
+    justify-content: center;
+    gap: clamp(56px, 18vw, 96px);
+    width: auto;
     height: auto;
-    margin-top: clamp(20px, 5vw, 36px);
+    margin-top: clamp(12px, 3vw, 22px);
   }
 
+  /* Minimal on a phone: the chevron alone, no ring, and quiet enough that the
+     advertisement stays the thing you look at. */
   .carousel-arrow {
     position: static;
-    width: 48px;
-    height: 48px;
+    width: 34px;
+    height: 34px;
     flex-shrink: 0;
+    opacity: 0.6;
+  }
+
+  .carousel-arrow circle {
+    display: none;
+  }
+
+  .carousel-arrow path {
+    stroke-width: 2.6;
   }
 
   /* RTL: the next advertisement lies to the left, so the button that points
