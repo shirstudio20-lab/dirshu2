@@ -19,8 +19,11 @@
   --color-ring: #dbc29d; /* stroke around the active thumbnail (52:1285) */
 
   /* ---- Typography ------------------------------------------------ */
-  --font-display: 'Levi DL v1 AAA', 'Frank Ruhl Libre', 'David Libre', serif;
-  --font-body: 'Atlas DL 3.1 AAA', 'Heebo', 'Assistant', sans-serif;
+  /* The licensed name leads; with no @font-face for it the browser skips
+     straight to Frank Ruhl Libre. The tail covers phones that cannot reach
+     Google Fonts at all. */
+  --font-display: 'Levi DL v1 AAA', 'Frank Ruhl Libre', 'David Libre', 'Times New Roman', serif;
+  --font-body: 'Atlas DL 3.1 AAA', 'Heebo', 'Assistant', 'Arial Hebrew', system-ui, -apple-system, sans-serif;
 
   --text-hero: 130px;
   --text-section-title: 80px;
