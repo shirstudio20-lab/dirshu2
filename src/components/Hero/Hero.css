@@ -153,7 +153,9 @@
     position: absolute;
     /* Nudged left of the box edge so the building sits on centre rather
        than a touch to the right of it. */
-    inset: auto auto 0 -7%;
+    /* Pushed down inside its frame: more sky above the roof, less empty
+       pavement below, so the building sits lower rather than against the bar. */
+    inset: auto auto -20% -7%;
     width: 215%;
     height: auto;
     object-fit: contain;
