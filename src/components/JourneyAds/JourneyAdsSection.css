@@ -194,14 +194,18 @@
     width: 100%;
   }
 
+  /* Relative so it paints above the positioned backdrop, but every canvas
+     offset has to be cleared or the element keeps them and leaves the screen. */
   .journey-ads__heading,
   .journey-ads__note {
     position: relative;
+    inset: auto;
     z-index: 1;
   }
 
   .journey-ads__heading {
     position: relative;
+    inset: auto;
     width: auto;
     font-size: var(--text-section-title);
     /* Painted, not clipped: a failed background-clip leaves the text
