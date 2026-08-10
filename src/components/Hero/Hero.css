@@ -131,7 +131,7 @@
       #03101f 100%
     );
     /* Clear of the header bar, which floats over the section. */
-    padding-top: clamp(70px, 21vw, 104px);
+    padding-top: clamp(86px, 26vw, 124px);
   }
 
   /* A real box now: the whole frame is shown rather than cropped, so the
@@ -145,7 +145,7 @@
     position: relative;
     flex: 0 0 auto;
     width: 100%;
-    height: clamp(250px, 43svh, 470px);
+    height: clamp(240px, 41svh, 450px);
     overflow: hidden;
   }
 
