@@ -187,16 +187,20 @@
   .download-card__preview {
     width: 100%;
     aspect-ratio: auto;
-    height: clamp(122px, 34vw, 200px);
+    height: clamp(148px, 41vw, 210px);
     border-radius: clamp(14px, 4vw, 20px);
   }
 
   .downloads__grid > .download-card:first-child .download-card__preview {
-    height: clamp(150px, 42vw, 220px);
+    height: clamp(190px, 53vw, 260px);
   }
 
+  /* Fills the frame edge to edge. Cover scales, it never stretches, and the
+     covers are photographed with a wide cream margin, so what the crop takes
+     is background rather than the book. */
   .download-card__preview img {
-    object-fit: contain;
+    object-fit: cover;
+    object-position: center;
   }
 
   .download-card__cta {
