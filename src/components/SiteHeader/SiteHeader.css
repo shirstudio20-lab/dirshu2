@@ -11,7 +11,23 @@
 .site-header {
   position: absolute;
   inset: 0 0 auto 0;
-  height: min(195px, 10.156vw);
+
+  /* The branding lockup is driven by one number. --crest-height is the main
+     Dirshu mark at 100%; the gold mark is a fixed fraction of it, and both
+     widths come from the files' own ratios, so the relationship between them
+     holds at every width and in every state. Change the reference and the
+     whole group rescales together. */
+  --bar-height: min(195px, 10.156vw);
+  --crest-height: min(163px, 8.49vw);
+  --emblem-scale: 0.575;
+  --crest-top: min(32px, 1.667vw);
+  --crest-right: min(79px, 4.114vw);
+  --crest-width: calc(var(--crest-height) * 122 / 163);
+  --emblem-height: calc(var(--crest-height) * var(--emblem-scale));
+  --emblem-width: calc(var(--emblem-height) * 531 / 256);
+  --logo-gap: calc(var(--crest-height) * 0.085);
+
+  height: var(--bar-height);
   z-index: 50;
 }
 
@@ -81,7 +97,7 @@
 /* Node 52:1256 — 930 × 24 at (753, 63); right edge at 1683. */
 .site-header__nav {
   position: absolute;
-  right: min(437px, 22.76vw);
+  right: calc(var(--crest-right) + var(--crest-width) + var(--logo-gap) + var(--emblem-width) + min(28px, 1.458vw));
   top: min(63px, 3.281vw);
 }
 
@@ -137,23 +153,21 @@
    the crest so the pair reads as one lockup; the ratio is the file's own. */
 .site-header__emblem {
   position: absolute;
-  right: min(219px, 11.406vw);
-  top: min(66px, 3.438vw);
-  width: min(198px, 10.313vw);
-  /* The width/height attributes on the tag act as a style, so the height has
-     to be released for the ratio to drive it. */
-  height: auto;
-  aspect-ratio: 531 / 256;
+  right: calc(var(--crest-right) + var(--crest-width) + var(--logo-gap));
+  /* Centred on the crest, so the pair reads as one group. */
+  top: calc(var(--crest-top) + (var(--crest-height) - var(--emblem-height)) / 2);
+  width: var(--emblem-width);
+  height: var(--emblem-height);
   object-fit: contain;
 }
 
 /* Node 52:1265 — 122 × 163 at (1719, 32); right inset 79. */
 .site-header__crest {
   position: absolute;
-  right: min(79px, 4.114vw);
-  top: min(32px, 1.667vw);
-  width: min(122px, 6.354vw);
-  aspect-ratio: 122 / 163;
+  right: var(--crest-right);
+  top: var(--crest-top);
+  width: var(--crest-width);
+  height: var(--crest-height);
 }
 
 .site-header__crest img {
@@ -182,7 +196,10 @@
    sides they were on, only tighter. */
 .site-header.is-stuck {
   position: fixed;
-  height: clamp(56px, 3.33vw, 64px);
+  --bar-height: clamp(56px, 3.33vw, 64px);
+  /* The lockup is read off the bar itself, so it can never outgrow it. */
+  --crest-height: calc(var(--bar-height) * 0.82);
+  --logo-gap: calc(var(--crest-height) * 0.26);
   background: #06112d;
   border-bottom: 0;
   /* Completely flat: no shadow, no glow, no blur. */
@@ -196,20 +213,17 @@
 /* Sticky: both marks are sized to live inside the bar and are centred on it,
    so nothing spills into the section below and nothing is cut off. Each keeps
    its own ratio — only the width is set. */
+/* Both marks centre on the slimmer bar; their sizes already came from the
+   reference above, so the ratio between them is unchanged. */
 .site-header.is-stuck .site-header__emblem {
   top: 50%;
   transform: translateY(-50%);
-  right: min(133px, 6.927vw);
-  /* 83 wide is 40 tall at 531:256 — inside a 64px bar with air either side. */
-  width: min(83px, 4.323vw);
 }
 
 /* Scaled to the slimmer bar; it still passes the lower edge, but only just. */
 .site-header.is-stuck .site-header__crest {
   top: 50%;
   transform: translateY(-50%);
-  /* 40 wide is 53 tall at 122:163 — the tallest either mark gets in the bar. */
-  width: min(40px, 2.083vw);
   box-shadow: none;
   filter: none;
 }
@@ -237,6 +251,10 @@
      differently sized header slide in. */
   .site-header,
   .site-header.is-stuck {
+    /* One reference for the phone bar too, and the gap is pinned here so the
+       two states cannot drift apart. */
+    --crest-height: clamp(60px, 16vw, 86px);
+    --logo-gap: calc(var(--crest-height) * 0.1);
     height: auto;
     display: flex;
     align-items: center;
@@ -257,8 +275,9 @@
     /* The canvas centres the marks with a transform; a flex child in the bar
        must not inherit it or it rides up out of the row. */
     transform: none;
-    width: clamp(58px, 15.5vw, 84px);
-    margin-inline-start: clamp(4px, 1.6vw, 10px);
+    width: var(--emblem-width);
+    height: var(--emblem-height);
+    margin-inline-start: var(--logo-gap);
   }
 
   /* The crest keeps one size and hangs a little below the bar, exactly as it
@@ -270,9 +289,9 @@
     flex-shrink: 0;
     top: auto;
     transform: none;
-    width: clamp(62px, 16.5vw, 84px);
-    height: auto;
-    margin-bottom: clamp(-24px, -5.5vw, -14px);
+    width: var(--crest-width);
+    height: var(--crest-height);
+    margin-bottom: calc(var(--crest-height) * -0.25);
   }
 
   .site-header__toggle {
