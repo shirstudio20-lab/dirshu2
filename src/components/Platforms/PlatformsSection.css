@@ -49,7 +49,8 @@
 /* --- logos, node 52:1307 -------------------------------------------------- */
 
 .platforms__list {
-  /* Left to right, matching the order in the design. */
+  /* Left to right, matching the order in the design: the last entry in the
+     data is the one that reads first in the RTL row. */
   direction: ltr;
   display: flex;
   flex-wrap: wrap;
@@ -175,16 +176,18 @@ a.platforms__button:focus-visible {
 
 /* --- responsive ----------------------------------------------------------- */
 
-/* Phones: three logos on the first row, two centred beneath them. */
+/* Phones: all six stay on one line — the circles shrink, they never wrap. */
 @media (max-width: 599px) {
-  /* All five stay on one line: the circles shrink, they never wrap. */
   .platforms__list {
     flex-wrap: nowrap;
-    gap: clamp(6px, 2vw, 14px);
+    gap: clamp(4px, 1.4vw, 12px);
   }
 
   .platforms__item {
-    width: clamp(48px, 15.5vw, 84px);
+    /* Sized so six discs plus their gaps clear the narrowest phone. */
+    width: clamp(38px, 12.8vw, 84px);
+    flex: 0 1 auto;
+    min-width: 0;
   }
 
   .platforms__quote-line::before,

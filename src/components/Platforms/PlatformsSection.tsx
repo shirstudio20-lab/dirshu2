@@ -21,27 +21,32 @@ export function PlatformsSection() {
 
           {/* Node 52:1307 — laid out left to right, as in the design. */}
           <ul className="platforms__list">
-            {platforms.map((platform) => (
-              <li className="platforms__item" key={platform.id}>
-                {/* The whole circle is the target. Until a url is filled in
-                    there is nothing to link to, so it renders as plain art. */}
-                {platform.url ? (
-                  <a
-                    className="platforms__button"
-                    href={platform.url}
-                    target="_blank"
-                    rel="noreferrer noopener"
-                    aria-label={platform.alt}
-                  >
-                    <img src={platform.image} alt="" loading="lazy" />
-                  </a>
-                ) : (
-                  <span className="platforms__button">
-                    <img src={platform.image} alt={platform.alt} loading="lazy" />
-                  </span>
-                )}
-              </li>
-            ))}
+            {platforms.map((platform) => {
+              // A phone number has to dial in place; a website opens away from
+              // the page. Everything else about the two is identical.
+              const isCall = platform.url.startsWith('tel:')
+
+              return (
+                <li className="platforms__item" key={platform.id}>
+                  {/* The anchor is the whole disc, not the artwork inside it. */}
+                  {platform.url ? (
+                    <a
+                      className="platforms__button"
+                      href={platform.url}
+                      target={isCall ? undefined : '_blank'}
+                      rel={isCall ? undefined : 'noreferrer noopener'}
+                      aria-label={platform.alt}
+                    >
+                      <img src={platform.image} alt="" loading="lazy" />
+                    </a>
+                  ) : (
+                    <span className="platforms__button">
+                      <img src={platform.image} alt={platform.alt} loading="lazy" />
+                    </span>
+                  )}
+                </li>
+              )
+            })}
           </ul>
 
           {/* Nodes 52:1327 with the rules of 52:1328 / 52:1329 either side. */}
