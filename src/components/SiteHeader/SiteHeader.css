@@ -154,8 +154,12 @@
 .site-header__emblem {
   position: absolute;
   right: calc(var(--crest-right) + var(--crest-width) + var(--logo-gap));
-  /* Centred on the crest, so the pair reads as one group. */
-  top: calc(var(--crest-top) + (var(--crest-height) - var(--emblem-height)) / 2);
+  /* Centred on the crest, then lifted a little — the crest carries weight
+     low in its frame, so optical centre sits above geometric centre. The
+     offset is a fraction of the reference, so it scales with everything else. */
+  top: calc(
+    var(--crest-top) + (var(--crest-height) - var(--emblem-height)) / 2 - var(--crest-height) * 0.075
+  );
   width: var(--emblem-width);
   height: var(--emblem-height);
   object-fit: contain;
