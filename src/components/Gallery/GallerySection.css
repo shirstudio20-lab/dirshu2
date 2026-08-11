@@ -377,6 +377,6 @@
 
 
 .radin .gallery__columns {
-  -webkit-mask-image: linear-gradient(to bottom, transparent 0%, #000 3.5%, #000 96.5%, transparent 100%);
-  mask-image: linear-gradient(to bottom, transparent 0%, #000 3.5%, #000 96.5%, transparent 100%);
+  -webkit-mask-image: linear-gradient(to bottom, transparent 0%, #000 2%, #000 98%, transparent 100%);
+  mask-image: linear-gradient(to bottom, transparent 0%, #000 2%, #000 98%, transparent 100%);
 }
