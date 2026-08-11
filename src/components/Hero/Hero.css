@@ -29,6 +29,21 @@
 .hero__backdrop--film {
   /* Over the still, under the header and the copy. */
   z-index: 0;
+  /* Held back until a frame is decoded, then handed over. The still beneath
+     is the same frame in the same box, so the only thing this hides is the
+     browser's own blank-video flash — hence 90ms, not a crossfade. */
+  opacity: 0;
+  transition: opacity 90ms linear;
+}
+
+.hero__backdrop--film.is-ready {
+  opacity: 1;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero__backdrop--film {
+    transition: none;
+  }
 }
 
 /* Node 52:1266 — 657 × 492 at (1103, 311); column, 41px gap, aligned to the
