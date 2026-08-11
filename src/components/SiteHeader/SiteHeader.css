@@ -1,10 +1,10 @@
-/* ---------------------------------------------------------------------------
+﻿/* ---------------------------------------------------------------------------
    The site's only header. It lives at the top of the app, outside every
    scaled stage, so it can pin to the viewport on its own.
 
    Every measurement is the Figma value written as `min(px, vw)`: at 1920 it
    resolves to the exact canvas number, below that it shrinks by the same ratio
-   the hero canvas does, and past 1920 it caps — so it looks identical to when
+   the hero canvas does, and past 1920 it caps ג€” so it looks identical to when
    it was drawn inside the hero.
    --------------------------------------------------------------------------- */
 
@@ -19,7 +19,7 @@
      whole group rescales together. */
   --bar-height: min(195px, 10.156vw);
   --crest-height: min(163px, 8.49vw);
-  --emblem-scale: 0.44;
+  --emblem-scale: 0.48;
   --crest-top: min(32px, 1.667vw);
   --crest-right: min(79px, 4.114vw);
   --crest-width: calc(var(--crest-height) * 122 / 163);
@@ -27,7 +27,7 @@
   --emblem-width: calc(var(--emblem-height) * 531 / 256);
   --logo-gap: calc(var(--crest-height) * 0.085);
   /* Centre line of the navigation row: the nav sits at 63 and is 24 tall, the
-     utility group at 48 and is 54 tall — both centre on 75 of the canvas. */
+     utility group at 48 and is 54 tall ג€” both centre on 75 of the canvas. */
   --nav-row-centre: min(75px, 3.906vw);
 
   height: var(--bar-height);
@@ -43,7 +43,7 @@
   display: none;
 }
 
-/* Node 52:1250 — 327 × 54 at (67, 48); pill then language, left to right. */
+/* Node 52:1250 ג€” 327 ֳ— 54 at (67, 48); pill then language, left to right. */
 .site-header__utility {
   position: absolute;
   left: min(67px, 3.49vw);
@@ -64,7 +64,7 @@
   font-size: min(18px, 0.938vw);
 }
 
-/* Node 52:1253 — 80 × 44, flag on the left, label on the right. */
+/* Node 52:1253 ג€” 80 ֳ— 44, flag on the left, label on the right. */
 .language-switcher {
   display: flex;
   direction: ltr;
@@ -97,7 +97,7 @@
   white-space: nowrap;
 }
 
-/* Node 52:1256 — 930 × 24 at (753, 63); right edge at 1683. */
+/* Node 52:1256 ג€” 930 ֳ— 24 at (753, 63); right edge at 1683. */
 .site-header__nav {
   position: absolute;
   right: calc(var(--crest-right) + var(--crest-width) + var(--logo-gap) + var(--emblem-width) + min(28px, 1.458vw));
@@ -130,7 +130,7 @@
   color: var(--color-gold-light);
 }
 
-/* Hover underline — grows out from the centre, clear of the baseline so the
+/* Hover underline ג€” grows out from the centre, clear of the baseline so the
    text never moves and the header keeps its height. */
 .nav-menu__link::after {
   content: '';
@@ -165,7 +165,7 @@
   object-fit: contain;
 }
 
-/* Node 52:1265 — 122 × 163 at (1719, 32); right inset 79. */
+/* Node 52:1265 ג€” 122 ֳ— 163 at (1719, 32); right inset 79. */
 .site-header__crest {
   position: absolute;
   right: var(--crest-right);
@@ -196,14 +196,16 @@
 /* --- scrolled state ------------------------------------------------------- */
 
 /* The same element: it stops scrolling with the page, gains the navy bar and
-   compacts. Nothing reorders — crest, navigation and call to action keep the
+   compacts. Nothing reorders ג€” crest, navigation and call to action keep the
    sides they were on, only tighter. */
 .site-header.is-stuck {
   position: fixed;
-  --bar-height: clamp(56px, 3.33vw, 64px);
+  --bar-height: clamp(74px, 4.25vw, 82px);
   /* The lockup is read off the bar itself, so it can never outgrow it. */
-  --crest-height: calc(var(--bar-height) * 0.82);
-  --logo-gap: calc(var(--crest-height) * 0.26);
+  --crest-height: clamp(80px, 5.25vw, 101px);
+  --emblem-scale: 0.48;
+  --crest-top: calc((var(--bar-height) - var(--crest-height)) / 2 + var(--crest-height) * 0.04);
+  --logo-gap: calc(var(--crest-height) * 0.16);
   background: #06112d;
   border-bottom: 0;
   /* Completely flat: no shadow, no glow, no blur. */
@@ -216,7 +218,7 @@
 
 /* Sticky: both marks are sized to live inside the bar and are centred on it,
    so nothing spills into the section below and nothing is cut off. Each keeps
-   its own ratio — only the width is set. */
+   its own ratio ג€” only the width is set. */
 /* Both marks centre on the slimmer bar; their sizes already came from the
    reference above, so the ratio between them is unchanged. */
 .site-header.is-stuck .site-header__emblem {
@@ -226,8 +228,12 @@
 
 /* Scaled to the slimmer bar; it still passes the lower edge, but only just. */
 .site-header.is-stuck .site-header__crest {
-  top: 50%;
-  transform: translateY(-50%);
+  top: var(--crest-top);
+  transform: none;
+  width: calc(var(--crest-width) * 1.12);
+  height: calc(var(--crest-height) * 1.12);
+  width: calc(var(--crest-width) * 1.12);
+  height: calc(var(--crest-height) * 1.12);
   box-shadow: none;
   filter: none;
 }
@@ -251,7 +257,7 @@
 
 @media (max-width: 1023px) {
   /* One bar, identical in both states. Scrolling only changes what the bar
-     is anchored to — never how it looks — so a phone never sees a second,
+     is anchored to ג€” never how it looks ג€” so a phone never sees a second,
      differently sized header slide in. */
   .site-header,
   .site-header.is-stuck {
@@ -391,7 +397,7 @@
     font-size: clamp(20px, 5.4vw, 26px);
   }
 
-  /* No hover on touch — the underline would stick after a tap. */
+  /* No hover on touch ג€” the underline would stick after a tap. */
   .nav-menu__link::after {
     display: none;
   }
@@ -445,3 +451,6 @@
     transition: none;
   }
 }
+
+
+
