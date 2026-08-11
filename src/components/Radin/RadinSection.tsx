@@ -1,4 +1,4 @@
-﻿import { useRef, useState, type CSSProperties } from 'react'
+import { useRef, useState, type CSSProperties } from 'react'
 import { useDragSwipe } from '../../hooks/useDragSwipe'
 import { INITIAL_VIDEO_ID, radinVideos, youTubeEmbed, youTubePoster } from '../../data/videos'
 import { GallerySection } from '../Gallery/GallerySection'
@@ -13,7 +13,7 @@ function wrap(value: number, length: number) {
 }
 
 /**
- * Section "׳—׳•׳–׳¨׳™׳ ׳׳¨׳׳“׳™׳" (nodes 52:1241ג€“52:1424).
+ * Section "חוזרים לראדין" (nodes 52:1241-52:1424).
  *
  * A centred carousel of films. Only the slide in the middle carries a player;
  * the ones either side are posters, so nothing is loading or playing off
@@ -35,17 +35,17 @@ export function RadinSection() {
   const activeIndex = wrap(position, radinVideos.length)
 
   return (
-    <section className="radin" aria-label="׳—׳•׳–׳¨׳™׳ ׳׳¨׳׳“׳™׳" aria-roledescription="carousel">
+    <section className="radin" aria-label="חוזרים לראדין" aria-roledescription="carousel">
       <div className="radin__background" aria-hidden="true" />
 
       <div className="radin__content">
         {/* Node 52:1272 */}
-        <h2 className="radin__heading">׳—׳•׳–׳¨׳™׳ ׳׳¨׳׳“׳™׳</h2>
+        <h2 className="radin__heading">חוזרים לראדין</h2>
 
         {/* Node 52:1330 */}
         <p className="radin__intro">
-          ׳¨׳’׳¢׳™ ׳”׳•׳“ ׳׳׳¡׳¢׳•׳× ׳”׳×׳₪׳™׳׳” ׳©׳ '׳“׳¨׳©׳•' ׳׳¢׳׳“׳™ ׳”׳×׳¢׳•׳¨׳¨׳•׳× ׳•׳¨׳’׳¢׳™ ׳”׳•׳“ ׳׳ ׳”׳׳§׳•׳ ׳©׳׳׳ ׳• ׳™׳¦׳׳” ׳×׳•׳¨׳” ׳•׳”׳•׳¨׳׳”
-          ׳׳™׳©׳¨׳׳
+          רגעי הוד ממסעות התפילה של 'דרשו' מעמדי התעוררות ורגעי הוד מן המקום שממנו יצאה תורה
+          והוראה לישראל
         </p>
 
         {/* Nodes 52:1393 (centre) / 52:1331 / 52:1362 (sides) */}
@@ -54,7 +54,7 @@ export function RadinSection() {
             const index = wrap(slot, radinVideos.length)
             const video = radinVideos[index]
             const isActive = slot === position
-            const label = video.title ?? `׳¡׳¨׳˜׳•׳ ${index + 1}`
+            const label = video.title ?? `סרטון ${index + 1}`
 
             return (
               <div
@@ -76,7 +76,7 @@ export function RadinSection() {
                   <button
                     className="radin__poster"
                     type="button"
-                    aria-label={`׳׳¢׳‘׳¨ ׳${label}`}
+                    aria-label={`מעבר ל${label}`}
                     tabIndex={-1}
                     onClick={() => setPosition(slot)}
                   >
@@ -94,7 +94,7 @@ export function RadinSection() {
         </div>
 
         {/* Node 52:1424 */}
-        <div className="radin__dots" role="tablist" aria-label="׳‘׳—׳™׳¨׳× ׳¡׳¨׳˜׳•׳">
+        <div className="radin__dots" role="tablist" aria-label="בחירת סרטון">
           {radinVideos.map((video, index) => (
             <button
               className={`radin__dot ${index === activeIndex ? 'is-active' : ''}`}
@@ -102,15 +102,14 @@ export function RadinSection() {
               type="button"
               role="tab"
               aria-selected={index === activeIndex}
-              aria-label={video.title ?? `׳¡׳¨׳˜׳•׳ ${index + 1}`}
+              aria-label={video.title ?? `סרטון ${index + 1}`}
               onClick={() => setPosition((current) => current + (index - wrap(current, radinVideos.length)))}
             />
           ))}
+        </div>
 
         <GallerySection />
-        </div>
       </div>
     </section>
   )
 }
-
