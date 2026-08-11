@@ -222,3 +222,12 @@
   pointer-events: none;
 }
 
+
+.radin {
+  margin-bottom: clamp(-260px, -14vw, -150px);
+}
+
+.radin__content {
+  padding-bottom: clamp(240px, 18vw, 380px);
+}
+
