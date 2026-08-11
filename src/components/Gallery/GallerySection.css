@@ -374,3 +374,9 @@
   padding: clamp(46px, 4vw, 82px) clamp(24px, 3.5vw, 67px) clamp(40px, 4.4vw, 84px);
 }
 
+
+
+.radin .gallery__columns {
+  -webkit-mask-image: none;
+  mask-image: none;
+}
