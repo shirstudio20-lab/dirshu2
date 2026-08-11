@@ -19,7 +19,7 @@
      whole group rescales together. */
   --bar-height: min(195px, 10.156vw);
   --crest-height: min(163px, 8.49vw);
-  --emblem-scale: 0.575;
+  --emblem-scale: 0.52;
   --crest-top: min(32px, 1.667vw);
   --crest-right: min(79px, 4.114vw);
   --crest-width: calc(var(--crest-height) * 122 / 163);
