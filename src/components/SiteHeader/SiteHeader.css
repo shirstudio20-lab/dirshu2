@@ -19,13 +19,16 @@
      whole group rescales together. */
   --bar-height: min(195px, 10.156vw);
   --crest-height: min(163px, 8.49vw);
-  --emblem-scale: 0.52;
+  --emblem-scale: 0.44;
   --crest-top: min(32px, 1.667vw);
   --crest-right: min(79px, 4.114vw);
   --crest-width: calc(var(--crest-height) * 122 / 163);
   --emblem-height: calc(var(--crest-height) * var(--emblem-scale));
   --emblem-width: calc(var(--emblem-height) * 531 / 256);
   --logo-gap: calc(var(--crest-height) * 0.085);
+  /* Centre line of the navigation row: the nav sits at 63 and is 24 tall, the
+     utility group at 48 and is 54 tall — both centre on 75 of the canvas. */
+  --nav-row-centre: min(75px, 3.906vw);
 
   height: var(--bar-height);
   z-index: 50;
@@ -154,12 +157,9 @@
 .site-header__emblem {
   position: absolute;
   right: calc(var(--crest-right) + var(--crest-width) + var(--logo-gap));
-  /* Centred on the crest, then lifted a little — the crest carries weight
-     low in its frame, so optical centre sits above geometric centre. The
-     offset is a fraction of the reference, so it scales with everything else. */
-  top: calc(
-    var(--crest-top) + (var(--crest-height) - var(--emblem-height)) / 2 - var(--crest-height) * 0.075
-  );
+  /* Centred on the navigation row rather than on the crest, so it reads as
+     part of the menu line, then eased down a touch off that line. */
+  top: calc(var(--nav-row-centre) - var(--emblem-height) / 2 + var(--crest-height) * 0.04);
   width: var(--emblem-width);
   height: var(--emblem-height);
   object-fit: contain;
