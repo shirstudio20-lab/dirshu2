@@ -193,15 +193,23 @@
   z-index: 80;
 }
 
+/* Sticky: both marks are sized to live inside the bar and are centred on it,
+   so nothing spills into the section below and nothing is cut off. Each keeps
+   its own ratio — only the width is set. */
 .site-header.is-stuck .site-header__emblem {
-  top: clamp(10px, 0.73vw, 14px);
-  width: clamp(88px, 6.1vw, 117px);
+  top: 50%;
+  transform: translateY(-50%);
+  right: min(133px, 6.927vw);
+  /* 83 wide is 40 tall at 531:256 — inside a 64px bar with air either side. */
+  width: min(83px, 4.323vw);
 }
 
 /* Scaled to the slimmer bar; it still passes the lower edge, but only just. */
 .site-header.is-stuck .site-header__crest {
-  top: clamp(3px, 0.21vw, 4px);
-  width: clamp(54px, 3.7vw, 71px);
+  top: 50%;
+  transform: translateY(-50%);
+  /* 40 wide is 53 tall at 122:163 — the tallest either mark gets in the bar. */
+  width: min(40px, 2.083vw);
   box-shadow: none;
   filter: none;
 }
@@ -246,6 +254,9 @@
     flex-shrink: 0;
     top: auto;
     right: auto;
+    /* The canvas centres the marks with a transform; a flex child in the bar
+       must not inherit it or it rides up out of the row. */
+    transform: none;
     width: clamp(58px, 15.5vw, 84px);
     margin-inline-start: clamp(4px, 1.6vw, 10px);
   }
@@ -258,6 +269,7 @@
     order: 1;
     flex-shrink: 0;
     top: auto;
+    transform: none;
     width: clamp(62px, 16.5vw, 84px);
     height: auto;
     margin-bottom: clamp(-24px, -5.5vw, -14px);
