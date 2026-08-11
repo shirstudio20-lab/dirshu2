@@ -56,7 +56,7 @@ export function JourneyAdsSection({ scale, fluid, viewportWidth }: JourneyAdsSec
   const activeAnnouncement = announcements[wrapIndex(position, announcements.length)]
 
   return (
-    <section className="journey-ads" aria-label="פרטי המסע ההיסטורי" aria-roledescription="carousel">
+    <section id="journey" className="journey-ads" aria-label="פרטי המסע ההיסטורי" aria-roledescription="carousel">
       <ScaledStage designHeight={layout.sectionHeight} scale={scale} fluid={fluid}>
         {/* Node 52:1238 */}
         <div className="journey-ads__backdrop">

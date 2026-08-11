@@ -167,6 +167,7 @@ export function TorahStagesSection({
 
   return (
     <section
+      id="stages"
       className="torah-stages"
       ref={trackRef}
       style={{ height: trackHeight, '--visual-scale': visualScale } as CSSProperties}

@@ -22,7 +22,7 @@ export function HeroesBookSection({ scale, fluid }: HeroesBookSectionProps) {
   const prayerModal = usePrayerModal()
 
   return (
-    <section className="heroes-book" aria-label="ספר הגיבורים">
+    <section id="heroes-book" className="heroes-book" aria-label="ספר הגיבורים">
       <ScaledStage designHeight={HEROES_HEIGHT} scale={scale} fluid={fluid}>
         <div className="heroes-book__copy">
           {/* Node 52:1304 */}

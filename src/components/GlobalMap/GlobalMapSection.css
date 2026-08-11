@@ -526,6 +526,19 @@ a.branch-card__text:focus-visible {
   }
 }
 
+/* A quiet closing line on every card, branch or head office. */
+.branch-card__note {
+  margin-top: 14px;
+  padding-top: 12px;
+  border-top: 1px solid rgba(13, 49, 103, 0.12);
+  font-family: var(--font-body);
+  font-weight: 400;
+  font-size: 0.86em;
+  line-height: 1.35;
+  color: rgba(13, 49, 103, 0.72);
+  text-align: start;
+}
+
 /* --- below 1024px: the card drops under the globe ------------------------ */
 
 @media (max-width: 1023px) {

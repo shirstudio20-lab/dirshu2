@@ -36,7 +36,7 @@ export function JoinSection({ scale, fluid }: JoinSectionProps) {
   }
 
   return (
-    <section className="join" aria-label="להימנות עם לומדי תורתו">
+    <section id="join" className="join" aria-label="להימנות עם לומדי תורתו">
       <div className="join__background" aria-hidden="true" />
 
       <ScaledStage designHeight={JOIN_HEIGHT} scale={scale} fluid={fluid}>

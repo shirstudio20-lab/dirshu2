@@ -52,3 +52,29 @@ button {
   border: 0;
   cursor: pointer;
 }
+
+/* --- in-page navigation ---------------------------------------------------
+   The header is fixed once the page scrolls, so a heading landed on by an
+   anchor would sit behind it. Every target reserves the bar's height above
+   itself, and the jump is animated unless the reader asked for less motion. */
+
+html {
+  scroll-behavior: smooth;
+}
+
+:target,
+#stages,
+#journey,
+#heroes-book,
+#global,
+#join,
+#chafetz,
+#downloads {
+  scroll-margin-top: clamp(72px, 8vw, 128px);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}

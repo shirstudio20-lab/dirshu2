@@ -44,6 +44,7 @@ export function ChafetzChaimSection({ scale, fluid }: ChafetzChaimSectionProps) 
 
   return (
     <section
+      id="chafetz"
       className={`chafetz ${isRevealed ? 'is-revealed' : ''}`}
       ref={sectionRef}
       aria-label="תורת החפץ חיים"

@@ -133,7 +133,7 @@ export const branches: Branch[] = [
   {
     id: 'panama',
     location: 'פנמה',
-    contactName: 'הרב יוסף פרץ',
+    contactName: 'הרב גבריאל חזקיה',
     phone: '+50766788088',
     email: 'librosmarr@gmail.com',
     x: 11,

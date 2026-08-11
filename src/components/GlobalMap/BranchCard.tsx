@@ -87,6 +87,8 @@ export function BranchCard({ branch, onClose }: BranchCardProps) {
           </Row>
         ) : null}
       </ul>
+
+      <p className="branch-card__note">לפרטים נוספים - פנו לסניף המקומי</p>
     </div>
   )
 }

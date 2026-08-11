@@ -19,7 +19,7 @@ type DownloadsSectionProps = {
  */
 export function DownloadsSection({ scale, fluid }: DownloadsSectionProps) {
   return (
-    <section className="downloads" aria-label="קבצים להורדה">
+    <section id="downloads" className="downloads" aria-label="קבצים להורדה">
       <div className="downloads__background" aria-hidden="true" />
 
       <ScaledStage designHeight={DOWNLOADS_HEIGHT} scale={scale} fluid={fluid}>

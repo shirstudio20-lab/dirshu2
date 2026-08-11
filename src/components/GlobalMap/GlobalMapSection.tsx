@@ -110,7 +110,7 @@ export function GlobalMapSection({ fluid }: GlobalMapSectionProps) {
   }, [selectedId, fluid, isRevealed, resizeTick])
 
   return (
-    <section className="global-map" ref={sectionRef} aria-label="מלאה הארץ דעה">
+    <section id="global" className="global-map" ref={sectionRef} aria-label="מלאה הארץ דעה">
       {/* Full-viewport background, built from the film's own navy. */}
       <div className="global-map__backdrop" aria-hidden="true" />
 

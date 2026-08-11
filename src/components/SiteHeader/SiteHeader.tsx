@@ -51,6 +51,15 @@ export function SiteHeader() {
 
   return (
     <header className={`site-header ${isOpen ? 'is-open' : ''} ${isStuck ? 'is-stuck' : ''}`}>
+      {/* Sits to the left of the crest in the RTL row, at its own ratio. */}
+      <img
+        className="site-header__emblem"
+        src="/assets/dirshu-emblem.png"
+        alt=""
+        width={531}
+        height={256}
+      />
+
       <a className="site-header__crest" href="#" aria-label="דרשו — להחיות את תורתו">
         <img src="/assets/logo.png" alt="" width={122} height={163} />
       </a>

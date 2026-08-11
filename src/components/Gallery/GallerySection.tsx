@@ -47,12 +47,10 @@ export function GallerySection() {
   }
 
   return (
-    <section className="gallery" aria-label="ראדין בעין המצלמה">
+    <section className="gallery" aria-label="תמונות מראדין">
       <div className="gallery__background" aria-hidden="true" />
 
       <div className="gallery__content">
-        <h2 className="gallery__heading">ראדין בעין המצלמה</h2>
-
         <div className="gallery__columns">
           {columns.map((column, columnIndex) => (
             <div

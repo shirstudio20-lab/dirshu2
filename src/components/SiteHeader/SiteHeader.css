@@ -81,7 +81,7 @@
 /* Node 52:1256 — 930 × 24 at (753, 63); right edge at 1683. */
 .site-header__nav {
   position: absolute;
-  right: min(237px, 12.344vw);
+  right: min(437px, 22.76vw);
   top: min(63px, 3.281vw);
 }
 
@@ -133,6 +133,20 @@
   opacity: 1;
 }
 
+/* The horizontal emblem, immediately left of the crest. Height is matched to
+   the crest so the pair reads as one lockup; the ratio is the file's own. */
+.site-header__emblem {
+  position: absolute;
+  right: min(219px, 11.406vw);
+  top: min(66px, 3.438vw);
+  width: min(198px, 10.313vw);
+  /* The width/height attributes on the tag act as a style, so the height has
+     to be released for the ratio to drive it. */
+  height: auto;
+  aspect-ratio: 531 / 256;
+  object-fit: contain;
+}
+
 /* Node 52:1265 — 122 × 163 at (1719, 32); right inset 79. */
 .site-header__crest {
   position: absolute;
@@ -179,6 +193,11 @@
   z-index: 80;
 }
 
+.site-header.is-stuck .site-header__emblem {
+  top: clamp(10px, 0.73vw, 14px);
+  width: clamp(88px, 6.1vw, 117px);
+}
+
 /* Scaled to the slimmer bar; it still passes the lower edge, but only just. */
 .site-header.is-stuck .site-header__crest {
   top: clamp(3px, 0.21vw, 4px);
@@ -220,6 +239,17 @@
     box-shadow: none;
   }
 
+  .site-header__emblem,
+  .site-header.is-stuck .site-header__emblem {
+    position: static;
+    order: 2;
+    flex-shrink: 0;
+    top: auto;
+    right: auto;
+    width: clamp(58px, 15.5vw, 84px);
+    margin-inline-start: clamp(4px, 1.6vw, 10px);
+  }
+
   /* The crest keeps one size and hangs a little below the bar, exactly as it
      does at the top of the page. */
   .site-header__crest,
@@ -234,7 +264,7 @@
   }
 
   .site-header__toggle {
-    order: 3;
+    order: 4;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -337,38 +367,38 @@
     position: static;
     top: auto;
     transform: none;
-    order: 2;
+    order: 3;
     flex: 1 1 auto;
     min-width: 0;
     justify-content: center;
-    gap: clamp(6px, 2vw, 12px);
+    gap: clamp(4px, 1.4vw, 10px);
   }
 
   .site-header .pill-button {
     width: auto;
     min-width: 0;
-    height: clamp(36px, 9.6vw, 44px);
-    padding: 0 clamp(10px, 3vw, 16px);
+    height: clamp(34px, 9vw, 42px);
+    padding: 0 clamp(7px, 2.2vw, 14px);
   }
 
   .site-header .pill-button__label {
-    font-size: clamp(11px, 3.1vw, 14px);
+    font-size: clamp(9.5px, 2.7vw, 13px);
     white-space: nowrap;
   }
 
   .language-switcher {
-    width: clamp(58px, 15.5vw, 72px);
+    width: clamp(48px, 12.8vw, 66px);
     height: clamp(34px, 9vw, 40px);
     gap: 4px;
   }
 
   .language-switcher__flag {
-    width: clamp(26px, 7vw, 32px);
-    height: clamp(26px, 7vw, 32px);
+    width: clamp(22px, 6vw, 30px);
+    height: clamp(22px, 6vw, 30px);
   }
 
   .language-switcher__label {
-    font-size: clamp(13px, 3.4vw, 16px);
+    font-size: clamp(11px, 3vw, 15px);
   }
 }
 
