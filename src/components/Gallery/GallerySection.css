@@ -371,7 +371,11 @@
 }
 
 .radin .gallery__content {
-  padding: clamp(46px, 4vw, 82px) min(67px, 3.49vw) clamp(40px, 4.4vw, 84px);
+  padding-top: clamp(46px, 4vw, 82px);
+  padding-right: min(79px, 4.114vw);
+  padding-bottom: clamp(40px, 4.4vw, 84px);
+  padding-left: min(67px, 3.49vw);
+  box-sizing: border-box;
 }
 
 
