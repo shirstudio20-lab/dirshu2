@@ -1,6 +1,5 @@
-import { ChafetzChaimSection } from './components/ChafetzChaim/ChafetzChaimSection'
+﻿import { ChafetzChaimSection } from './components/ChafetzChaim/ChafetzChaimSection'
 import { DownloadsSection } from './components/Downloads/DownloadsSection'
-import { GallerySection } from './components/Gallery/GallerySection'
 import { GlobalMapSection } from './components/GlobalMap/GlobalMapSection'
 import { Hero } from './components/Hero/Hero'
 import { HeroesBookSection } from './components/HeroesBook/HeroesBookSection'
@@ -34,9 +33,9 @@ export default function App() {
       <ChafetzChaimSection scale={scale} fluid={fluid} />
       <DownloadsSection scale={scale} fluid={fluid} />
       <RadinSection />
-      <GallerySection />
       <PlatformsSection />
       </main>
     </PrayerModalProvider>
   )
 }
+
