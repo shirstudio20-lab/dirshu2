@@ -29,7 +29,7 @@ const purchaseLinks = [
 ]
 
 /** Height of the section on the 1920 canvas (node 52:1242). */
-export const CHAFETZ_CHAIM_HEIGHT = 800
+export const CHAFETZ_CHAIM_HEIGHT = 880
 
 type ChafetzChaimSectionProps = {
   scale: number
@@ -142,7 +142,8 @@ export function ChafetzChaimSection({ scale, fluid }: ChafetzChaimSectionProps) 
                   href={link.href}
                   aria-label={link.label}
                 >
-                  <img src={`${import.meta.env.BASE_URL}assets/${link.logo}`} alt={link.label} />
+                  <span className="chafetz__purchase-text">{link.label}</span>
+                  <img src={`${import.meta.env.BASE_URL}assets/${link.logo}`} alt="" />
                 </a>
               ))}
             </div>
