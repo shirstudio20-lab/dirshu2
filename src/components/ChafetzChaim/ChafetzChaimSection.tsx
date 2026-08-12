@@ -4,6 +4,30 @@ import { FileDownloadIcon } from '../icons/FileDownloadIcon'
 import { ScaledStage } from '../ScaledStage/ScaledStage'
 import './ChafetzChaimSection.css'
 
+const purchaseLinks = [
+  {
+    id: 'dirshu-books',
+    href: '#',
+    logo: 'purchase-dirshu-books.png',
+    label: 'לרכישה ישירה עם משלוח עד הבית - ספרי דרשו',
+    className: 'is-dirshu',
+  },
+  {
+    id: 'or-hachaim',
+    href: '#',
+    logo: 'purchase-or-hachaim.png',
+    label: "להפצה בארץ ישראל - ספרי אור החיים",
+    className: 'is-or-hachaim',
+  },
+  {
+    id: 'israel-bookshop',
+    href: '#',
+    logo: 'purchase-israel-bookshop.png',
+    label: 'הפצה בארה"ב - Israel Bookshop',
+    className: 'is-bookshop',
+  },
+]
+
 /** Height of the section on the 1920 canvas (node 52:1242). */
 export const CHAFETZ_CHAIM_HEIGHT = 800
 
@@ -108,6 +132,19 @@ export function ChafetzChaimSection({ scale, fluid }: ChafetzChaimSectionProps) 
                   </button>
                 ),
               )}
+            </div>
+
+            <div className="chafetz__purchase-links" aria-label="אפשרויות רכישה">
+              {purchaseLinks.map((link) => (
+                <a
+                  className={`chafetz__purchase-link ${link.className}`}
+                  key={link.id}
+                  href={link.href}
+                  aria-label={link.label}
+                >
+                  <img src={`${import.meta.env.BASE_URL}assets/${link.logo}`} alt={link.label} />
+                </a>
+              ))}
             </div>
           </div>
         </div>
