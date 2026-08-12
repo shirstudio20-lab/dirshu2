@@ -4,7 +4,6 @@ import { GlobalMapSection } from './components/GlobalMap/GlobalMapSection'
 import { Hero } from './components/Hero/Hero'
 import { HeroesBookSection } from './components/HeroesBook/HeroesBookSection'
 import { LearningProgramsSection } from './components/LearningPrograms/LearningProgramsSection'
-import { JoinSection } from './components/Join/JoinSection'
 import { JourneyAdsSection } from './components/JourneyAds/JourneyAdsSection'
 import { PrayerModalProvider } from './components/PrayerModal/PrayerModalProvider'
 import { TorahLessonsSection } from './components/TorahLessons/TorahLessonsSection'
@@ -32,7 +31,6 @@ export default function App() {
       <HeroesBookSection scale={scale} fluid={fluid} />
       <GlobalMapSection fluid={fluid} />
       <LearningProgramsSection />
-      <JoinSection scale={scale} fluid={fluid} />
       <ChafetzChaimSection scale={scale} fluid={fluid} />
       <DownloadsSection scale={scale} fluid={fluid} />
       <RadinSection />
