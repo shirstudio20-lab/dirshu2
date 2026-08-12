@@ -85,30 +85,9 @@ export function ChafetzChaimSection({ scale, fluid }: ChafetzChaimSectionProps) 
               src={`${import.meta.env.BASE_URL}assets/chafetz-chaim-set-final.png`}
               alt="סט ספרי תורת החפץ חיים"
             />
-          </div>
-
-          <div className="chafetz__copy">
-            {/* Node 52:1273 */}
-            <h2 className="chafetz__heading">תורת החפץ חיים</h2>
-
-            {/* Node 52:1454 */}
-            <p className="chafetz__body">
-              סט ספרי 'תורת החפץ חיים' מופיעים לראשונה במהדורה חדשה ומפוארת - י"ח מספריו הקדושים
-              שחיבר בקדשו, בתוספת מאות מראי מקומות, ניקוד ופיסוק מאירי עיניים - למען ירוץ בהם הלומד,
-              ישמע חכם ויוסיף לקח, דעת ויראת ה'
-            </p>
-
-            {/* Node 52:1458 */}
-            <p className="chafetz__offer">
-              <span className="chafetz__offer-label">מחיר מיוחד למצטרפים ללומדים</span>
-              <span className="chafetz__offer-price">
-                <span className="chafetz__offer-new">85 ₪ לסט</span>
-                <s className="chafetz__offer-old">במקום 120 ₪</s>
-              </span>
-            </p>
-
+            <span className="chafetz__floor-shadow" aria-hidden="true" />
             {/* Node 52:1447 */}
-            <div className="chafetz__actions">
+            <div className="chafetz__actions chafetz__artwork-actions">
               {bookSetDownloads.map((item) =>
                 item.fileUrl ? (
                   <a className="chafetz__action" key={item.id} href={item.fileUrl} download>
@@ -133,6 +112,31 @@ export function ChafetzChaimSection({ scale, fluid }: ChafetzChaimSectionProps) 
                 ),
               )}
             </div>
+
+          </div>
+
+          <div className="chafetz__copy">
+            {/* Node 52:1273 */}
+            <h2 className="chafetz__heading">תורת החפץ חיים</h2>
+
+            {/* Node 52:1454 */}
+            <p className="chafetz__body">
+              סט ספרי 'תורת החפץ חיים' מופיעים לראשונה במהדורה חדשה ומפוארת - י"ח מספריו הקדושים
+              שחיבר בקדשו, בתוספת מאות מראי מקומות, ניקוד ופיסוק מאירי עיניים - למען ירוץ בהם הלומד,
+              ישמע חכם ויוסיף לקח, דעת ויראת ה'
+            </p>
+
+            {/* Node 52:1458 */}
+            <p className="chafetz__offer">
+              <span className="chafetz__offer-label">מחיר מיוחד למצטרפים ללומדים</span>
+              <span className="chafetz__offer-price">
+                <span className="chafetz__offer-new">85 ₪ לסט</span>
+                <s className="chafetz__offer-old">במקום 120 ₪</s>
+              </span>
+            </p>
+
+            <div className="chafetz__actions-spacer" aria-hidden="true" />
+
 
             <div className="chafetz__purchase-links" aria-label="אפשרויות רכישה">
               {purchaseLinks.map((link) => (
