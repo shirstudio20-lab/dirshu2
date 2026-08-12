@@ -1,5 +1,5 @@
 import { fileDownloads } from '../../data/downloads'
-import { FileDownloadIcon } from '../icons/FileDownloadIcon'
+import { DownloadButton } from '../DownloadButton/DownloadButton'
 import './DownloadsSection.css'
 
 type DownloadsSectionProps = {
@@ -7,8 +7,8 @@ type DownloadsSectionProps = {
   fluid: boolean
 }
 
-const heading = "קבצים להורדה"
-const soonTitle = "הקובץ יעלה בקרוב"
+const heading = '\u05e7\u05d1\u05e6\u05d9\u05dd \u05dc\u05d4\u05d5\u05e8\u05d3\u05d4'
+const soonTitle = '\u05d4\u05e7\u05d5\u05d1\u05e5 \u05d9\u05e2\u05dc\u05d4 \u05d1\u05e7\u05e8\u05d5\u05d1'
 
 export function DownloadsSection(_props: DownloadsSectionProps) {
   return (
@@ -19,21 +19,9 @@ export function DownloadsSection(_props: DownloadsSectionProps) {
         <ul className="downloads__list">
           {fileDownloads.map((item) => (
             <li className="downloads__item" key={item.id}>
-              {item.fileUrl ? (
-                <a className="downloads__button" href={item.fileUrl} download>
-                  <span className="downloads__icon" aria-hidden="true">
-                    <FileDownloadIcon />
-                  </span>
-                  <span>{item.title}</span>
-                </a>
-              ) : (
-                <button className="downloads__button" type="button" disabled title={soonTitle}>
-                  <span className="downloads__icon" aria-hidden="true">
-                    <FileDownloadIcon />
-                  </span>
-                  <span>{item.title}</span>
-                </button>
-              )}
+              <DownloadButton href={item.fileUrl || undefined} disabledTitle={soonTitle}>
+                {item.title}
+              </DownloadButton>
             </li>
           ))}
         </ul>
