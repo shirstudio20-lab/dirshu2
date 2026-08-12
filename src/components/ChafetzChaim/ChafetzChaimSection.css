@@ -554,3 +554,50 @@
     margin-top: clamp(22px, 5vw, 34px);
   }
 }
+
+
+/* Compact Chafetz section spacing: less top/bottom air, more breathing room in the right copy. */
+.chafetz__artwork {
+  top: 128px;
+}
+
+.chafetz__copy {
+  top: 190px;
+}
+
+.chafetz__body {
+  margin-top: 40px;
+  line-height: 1.32;
+}
+
+.chafetz__offer {
+  margin-top: 48px;
+}
+
+.chafetz__purchase-links {
+  margin-top: 28px;
+}
+
+.chafetz__artwork-actions {
+  top: calc(100% + 22px);
+}
+
+@media (max-width: 1023px) {
+  .chafetz .scaled-stage--fluid {
+    padding-top: clamp(18px, 4vw, 42px);
+    padding-bottom: clamp(24px, 5vw, 42px);
+  }
+
+  .chafetz__body {
+    margin-top: 0;
+    line-height: 1.48;
+  }
+
+  .chafetz__offer {
+    margin-top: clamp(20px, 4vw, 28px);
+  }
+
+  .chafetz__purchase-links {
+    margin-top: clamp(20px, 5vw, 30px);
+  }
+}
