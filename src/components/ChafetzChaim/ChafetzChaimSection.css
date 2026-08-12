@@ -291,7 +291,7 @@
   line-height: 1.2;
   color: #0d3167;
   text-align: center;
-  white-space: normal;
+  white-space: pre-line;
 }
 
 .chafetz__purchase-link img {

@@ -16,14 +16,14 @@ const purchaseLinks = [
     id: 'or-hachaim',
     href: '#',
     logo: 'purchase-or-hachaim.png',
-    label: 'הפצה בארץ ישראל',
+    label: 'הפצה בארץ ישראל\nספרי אור החיים',
     className: 'is-or-hachaim',
   },
   {
     id: 'israel-bookshop',
     href: '#',
     logo: 'purchase-israel-bookshop.png',
-    label: 'הפצה בארצות הברית',
+    label: 'הפצה בארה"ב\nISRAEL BOOKSHOP',
     className: 'is-bookshop',
   },
 ]
