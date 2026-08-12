@@ -254,19 +254,22 @@
 
 .chafetz__purchase-links {
   display: flex;
-  align-items: center;
-  gap: 20px;
-  margin-top: 70px;
+  align-items: stretch;
+  justify-content: center;
+  gap: 16px;
+  margin-top: 66px;
 }
 
 .chafetz__purchase-link {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) auto;
+  grid-template-columns: 1fr;
+  grid-template-rows: auto 1fr;
   align-items: center;
-  gap: 14px;
-  width: 340px;
-  min-height: 82px;
-  padding: 14px 18px;
+  justify-items: center;
+  gap: 8px;
+  width: 236px;
+  min-height: 96px;
+  padding: 14px 18px 12px;
   border-radius: 12px;
   background: #f8f4ea;
   border: 1px solid rgba(255, 255, 255, 0.78);
@@ -283,29 +286,30 @@
 
 .chafetz__purchase-text {
   font-family: var(--font-body);
-  font-weight: 600;
+  font-weight: 700;
   font-size: 15px;
-  line-height: 1.25;
+  line-height: 1.2;
   color: #0d3167;
-  text-align: right;
+  text-align: center;
+  white-space: normal;
 }
 
 .chafetz__purchase-link img {
   display: block;
   width: auto;
-  max-width: 138px;
-  max-height: 48px;
+  max-width: 170px;
+  max-height: 42px;
   object-fit: contain;
 }
 
 .chafetz__purchase-link.is-bookshop img {
-  max-width: 150px;
-  max-height: 44px;
+  max-width: 178px;
+  max-height: 40px;
 }
 
 .chafetz__purchase-link.is-dirshu img {
-  max-width: 116px;
-  max-height: 54px;
+  max-width: 132px;
+  max-height: 48px;
 }
 
 /* --- below 1024px: heading, books, copy, offer, buttons ------------------ */
@@ -411,7 +415,7 @@
 
   .chafetz__purchase-link {
     width: min(100%, 330px);
-    min-height: clamp(72px, 17vw, 88px);
+    min-height: clamp(92px, 20vw, 112px);
   }
 
   .chafetz__action {
