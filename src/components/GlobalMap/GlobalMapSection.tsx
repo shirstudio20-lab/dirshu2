@@ -129,6 +129,8 @@ export function GlobalMapSection({ fluid }: GlobalMapSectionProps) {
           סניפי 'דרשו' ברחבי העולם מתאחדים לקראת המסע 'להחיות את תורתו'
         </p>
 
+        <p className="global-map__note">לפרטים נוספים פנו לסניף המקומי</p>
+
         <div className={`global-map__stage ${isRevealed ? 'is-revealed' : ''}`}>
           <video
             className="global-map__film"
