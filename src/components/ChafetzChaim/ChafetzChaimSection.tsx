@@ -29,7 +29,7 @@ const purchaseLinks = [
 ]
 
 /** Height of the section on the 1920 canvas (node 52:1242). */
-export const CHAFETZ_CHAIM_HEIGHT = 880
+export const CHAFETZ_CHAIM_HEIGHT = 940
 
 type ChafetzChaimSectionProps = {
   scale: number
