@@ -11,10 +11,10 @@ type DownloadButtonProps = {
 export function DownloadButton({ children, href, disabledTitle }: DownloadButtonProps) {
   const content = (
     <>
+      <span className="download-button__text">{children}</span>
       <span className="download-button__icon" aria-hidden="true">
         <FileDownloadIcon />
       </span>
-      <span className="download-button__text">{children}</span>
     </>
   )
 

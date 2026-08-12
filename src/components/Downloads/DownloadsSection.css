@@ -41,15 +41,13 @@
 }
 
 .downloads__list {
-  width: auto;
-  max-width: 100%;
   margin: 0 auto;
   padding: 0;
   display: grid;
   grid-template-columns: repeat(4, max-content);
-  align-items: center;
   justify-content: center;
-  gap: 14px;
+  align-items: center;
+  gap: 18px;
   list-style: none;
 }
 

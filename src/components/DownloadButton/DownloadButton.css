@@ -1,86 +1,64 @@
 .download-button {
   box-sizing: border-box;
-  width: max-content;
-  min-width: 318px;
-  max-width: none;
-  min-height: 72px;
+  min-width: 306px;
+  min-height: 59px;
   display: inline-flex;
-  direction: rtl;
   align-items: center;
   justify-content: center;
-  gap: 14px;
-  padding: 12px 22px 12px 26px;
+  gap: 13px;
+  direction: rtl;
+  padding: 0 26px;
   border: 0;
   border-radius: var(--radius-pill);
   background: var(--color-navy);
   color: var(--color-white);
   font-family: var(--font-body);
-  font-size: clamp(17px, 1.05vw, 20px);
-  font-weight: 400;
-  line-height: 1.25;
-  text-align: right;
+  font-size: clamp(18px, 1.06vw, 20px);
+  font-weight: 700;
+  line-height: 1.15;
   text-decoration: none;
   white-space: nowrap;
-  vertical-align: middle;
-  overflow: visible;
+  box-shadow: none;
 }
 
 .download-button:hover:not(:disabled),
 .download-button:focus-visible {
-  background: #092759;
+  background: #0d3470;
 }
 
 .download-button:disabled {
   cursor: default;
 }
 
+.download-button__text {
+  display: inline-block;
+  text-align: center;
+}
+
 .download-button__icon {
-  width: 44px;
-  height: 44px;
+  width: 36px;
+  height: 36px;
+  flex: 0 0 36px;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  flex: 0 0 44px;
   border-radius: 50%;
   background: var(--color-gold);
   color: var(--color-navy);
 }
 
 .download-button__icon svg {
-  width: 21px;
-  height: 21px;
+  width: 17px;
+  height: 17px;
 }
 
-.download-button__text {
-  display: inline-block;
-  flex: 0 0 auto;
-  min-width: max-content;
-  white-space: nowrap;
-  overflow: visible;
-}
-
-@media (max-width: 1400px) {
+@media (max-width: 760px) {
   .download-button {
     width: 100%;
     min-width: 0;
-  }
-
-  .download-button__text {
-    min-width: 0;
+    min-height: 56px;
+    padding: 0 20px;
+    font-size: 17px;
     white-space: normal;
-  }
-}
-
-@media (max-width: 640px) {
-  .download-button {
-    min-height: 62px;
-    justify-content: center;
-    padding: 10px 18px;
-  }
-
-  .download-button__icon {
-    width: 40px;
-    height: 40px;
-    flex-basis: 40px;
   }
 }
