@@ -41,14 +41,15 @@
 }
 
 .downloads__list {
-  width: 100%;
+  width: auto;
   max-width: 1260px;
-  margin: 0;
+  margin: 0 auto;
   padding: 0;
   display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
+  grid-template-columns: repeat(4, auto);
   align-items: center;
-  gap: 12px;
+  justify-content: center;
+  gap: 14px;
   list-style: none;
 }
 
@@ -57,25 +58,27 @@
 }
 
 .downloads__button {
+  box-sizing: border-box;
   width: 100%;
-  min-height: 73px;
-  display: inline-flex;
-  flex-direction: row-reverse;
+  min-width: 304px;
+  height: 73px;
+  display: grid;
+  grid-template-columns: 44px 1fr;
   align-items: center;
-  justify-content: center;
-  gap: 14px;
-  padding: 14px 16px;
+  column-gap: 14px;
+  padding: 0 22px;
   border: 0;
-  border-radius: 64px;
+  border-radius: 999px;
   background: var(--color-navy);
   color: var(--color-white);
   font-family: var(--font-body);
   font-weight: 400;
-  font-size: clamp(17px, 1.18vw, 22px);
-  line-height: 1.28;
+  font-size: clamp(17px, 1.12vw, 21px);
+  line-height: 1.22;
   text-align: right;
   text-decoration: none;
   white-space: nowrap;
+  overflow: hidden;
 }
 
 .downloads__button:hover:not(:disabled),
@@ -88,11 +91,12 @@
 }
 
 .downloads__icon {
-  width: clamp(38px, 2.4vw, 46px);
-  height: clamp(38px, 2.4vw, 46px);
+  width: 44px;
+  height: 44px;
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  justify-self: start;
   flex: 0 0 auto;
   border-radius: 50%;
   background: var(--color-gold);
@@ -100,14 +104,14 @@
 }
 
 .downloads__icon svg {
-  width: 52%;
-  height: 52%;
+  width: 21px;
+  height: 21px;
 }
 
 @media (max-width: 1180px) {
   .downloads__list {
     max-width: 760px;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-columns: repeat(2, auto);
   }
 }
 
@@ -126,12 +130,26 @@
   }
 
   .downloads__list {
+    width: 100%;
     max-width: 360px;
     grid-template-columns: 1fr;
   }
 
+  .downloads__item {
+    min-width: 0;
+  }
+
   .downloads__button {
+    min-width: 0;
+    height: auto;
     min-height: 62px;
+    grid-template-columns: 40px 1fr;
+    padding: 10px 18px;
     white-space: normal;
+  }
+
+  .downloads__icon {
+    width: 40px;
+    height: 40px;
   }
 }
