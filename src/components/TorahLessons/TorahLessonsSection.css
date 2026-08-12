@@ -18,7 +18,7 @@
 .torah-lessons__copy {
   grid-column: 1;
   direction: rtl;
-  text-align: center;
+  text-align: right;
   justify-self: end;
   width: min(100%, 620px);
 }
@@ -47,7 +47,7 @@
 }
 
 .torah-lessons__body {
-  margin: 0 auto 30px;
+  margin: 0 0 30px auto;
   max-width: 585px;
   color: var(--color-navy);
   font-family: var(--font-body);
@@ -55,6 +55,7 @@
   line-height: 1.55;
   font-weight: 500;
   white-space: pre-line;
+  text-align: right;
 }
 
 .torah-lessons__label {
@@ -68,11 +69,11 @@
 
 .torah-lessons__actions {
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   gap: 14px;
   flex-wrap: wrap;
   width: min(100%, 430px);
-  margin: 0 auto;
+  margin: 0;
 }
 
 .torah-lessons__button {
@@ -133,6 +134,7 @@
   .torah-lessons__actions {
     display: grid;
     width: min(100%, 330px);
+    margin: 0;
   }
 
   .torah-lessons__button {
