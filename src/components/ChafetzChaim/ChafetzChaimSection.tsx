@@ -55,10 +55,10 @@ export function ChafetzChaimSection({ scale, fluid }: ChafetzChaimSectionProps) 
         <div className="chafetz__inner">
           {/* Nodes 52:1987 (glow) and 52:1457 (the set). */}
           <div className="chafetz__artwork">
-            <img className="chafetz__glow" src="/assets/chafetz-chaim-glow.svg" alt="" />
+            <img className="chafetz__glow" src={`${import.meta.env.BASE_URL}assets/chafetz-chaim-glow.svg`} alt="" />
             <img
               className="chafetz__books"
-              src="/assets/chafetz-chaim-set-new.png"
+              src={`${import.meta.env.BASE_URL}assets/chafetz-chaim-set-new.png`}
               alt="סט ספרי תורת החפץ חיים"
             />
           </div>
