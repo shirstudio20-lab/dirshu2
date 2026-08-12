@@ -2,16 +2,18 @@
   background: #f7f1e0;
   color: var(--color-navy);
   direction: rtl;
-  padding: clamp(58px, 6.4vw, 88px) 0 clamp(62px, 6.6vw, 92px);
+  padding: clamp(58px, 5.4vw, 82px) 0 clamp(62px, 5.8vw, 88px);
+  overflow: hidden;
 }
 
 .torah-lessons__content {
-  width: min(1360px, calc(100% - clamp(28px, 4.5vw, 86px)));
+  width: calc(100% - clamp(80px, 9.5vw, 240px));
+  max-width: 1680px;
   margin: 0 auto;
   display: grid;
-  grid-template-columns: minmax(520px, 1.08fr) minmax(360px, 0.82fr);
+  grid-template-columns: minmax(0, 1fr) minmax(360px, 460px);
   align-items: center;
-  gap: clamp(58px, 7vw, 128px);
+  column-gap: clamp(96px, 11vw, 230px);
   direction: ltr;
 }
 
@@ -20,13 +22,13 @@
   direction: rtl;
   text-align: right;
   justify-self: end;
-  width: min(100%, 700px);
+  width: min(100%, 780px);
 }
 
 .torah-lessons__artwork {
   grid-column: 2;
   justify-self: start;
-  width: min(390px, 100%);
+  width: min(430px, 100%);
 }
 
 .torah-lessons__artwork img {
@@ -40,7 +42,7 @@
   margin: 0 0 22px;
   color: var(--color-navy);
   font-family: var(--font-display);
-  font-size: clamp(46px, 4.15vw, 66px);
+  font-size: clamp(42px, 3.65vw, 60px);
   line-height: 1.03;
   font-weight: 700;
   white-space: pre-line;
@@ -49,13 +51,12 @@
 
 .torah-lessons__body {
   margin: 0 0 28px auto;
-  max-width: 665px;
+  max-width: 760px;
   color: var(--color-navy);
   font-family: var(--font-body);
-  font-size: clamp(18px, 1.24vw, 21px);
-  line-height: 1.55;
+  font-size: clamp(17px, 1.05vw, 20px);
+  line-height: 1.6;
   font-weight: 500;
-  white-space: pre-line;
   text-align: right;
 }
 
@@ -63,7 +64,7 @@
   margin: 0 0 18px;
   color: var(--color-navy);
   font-family: var(--font-body);
-  font-size: clamp(23px, 1.9vw, 30px);
+  font-size: clamp(22px, 1.65vw, 28px);
   line-height: 1.2;
   font-weight: 800;
   text-align: right;
@@ -75,12 +76,12 @@
   justify-content: flex-start;
   gap: 14px;
   flex-wrap: wrap;
-  width: min(100%, 430px);
+  width: min(100%, 520px);
   margin: 0;
 }
 
 .torah-lessons__button {
-  min-width: 158px;
+  min-width: 160px;
   border-radius: var(--radius-pill);
   background: var(--color-navy);
   color: var(--color-white);
@@ -106,12 +107,21 @@
   }
 }
 
+@media (max-width: 1023px) {
+  .torah-lessons__content {
+    width: calc(100% - clamp(40px, 7vw, 88px));
+    grid-template-columns: minmax(0, 1fr) minmax(280px, 340px);
+    column-gap: clamp(36px, 6vw, 72px);
+  }
+}
+
 @media (max-width: 860px) {
   .torah-lessons {
     padding: 48px 0 58px;
   }
 
   .torah-lessons__content {
+    width: min(100% - 28px, 1120px);
     grid-template-columns: 1fr;
     gap: 28px;
     direction: rtl;
