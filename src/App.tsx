@@ -6,6 +6,7 @@ import { HeroesBookSection } from './components/HeroesBook/HeroesBookSection'
 import { JoinSection } from './components/Join/JoinSection'
 import { JourneyAdsSection } from './components/JourneyAds/JourneyAdsSection'
 import { PrayerModalProvider } from './components/PrayerModal/PrayerModalProvider'
+import { TorahLessonsSection } from './components/TorahLessons/TorahLessonsSection'
 import { PlatformsSection } from './components/Platforms/PlatformsSection'
 import { RadinSection } from './components/Radin/RadinSection'
 import { SiteHeader } from './components/SiteHeader/SiteHeader'
@@ -33,6 +34,7 @@ export default function App() {
       <ChafetzChaimSection scale={scale} fluid={fluid} />
       <DownloadsSection scale={scale} fluid={fluid} />
       <RadinSection />
+      <TorahLessonsSection />
       <PlatformsSection />
       </main>
     </PrayerModalProvider>
