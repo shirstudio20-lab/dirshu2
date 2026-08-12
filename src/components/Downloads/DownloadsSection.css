@@ -1,13 +1,26 @@
 .downloads {
   position: relative;
+  min-height: clamp(270px, 18.75vw, 360px);
+  background: #f7f1e0;
+  color: var(--color-navy);
+  direction: rtl;
+  padding: clamp(70px, 5.15vw, 99px) 0 clamp(58px, 4.35vw, 84px);
+  overflow: hidden;
+}
+
+.downloads::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
   background: url('/assets/downloads-paper-texture.jpg') center / cover no-repeat;
-  opacity: 1;
 }
 
 .downloads__inner {
   position: relative;
   z-index: 1;
-  width: min(1592px, calc(100% - clamp(32px, 6vw, 122px)));
+  width: min(1592px, calc(100% - clamp(34px, 6.4vw, 128px)));
   margin: 0 auto;
   display: flex;
   flex-direction: column;
@@ -20,7 +33,7 @@
   width: 100%;
   font-family: var(--font-display);
   font-weight: 700;
-  font-size: clamp(48px, 4.16vw, 80px);
+  font-size: clamp(52px, 4.16vw, 80px);
   line-height: 1;
   color: var(--color-navy);
   text-align: center;
@@ -28,19 +41,18 @@
 }
 
 .downloads__list {
+  width: 100%;
+  margin: 0;
+  padding: 0;
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 12px;
-  width: 100%;
-  margin: 0;
-  padding: 0;
   list-style: none;
-  flex-wrap: nowrap;
 }
 
 .downloads__item {
-  min-width: 0;
+  flex: 0 0 auto;
 }
 
 .downloads__button {
@@ -105,7 +117,7 @@
   }
 }
 
-@media (max-width: 1240px) {
+@media (max-width: 1320px) {
   .downloads__list {
     flex-wrap: wrap;
   }
@@ -117,6 +129,7 @@
 
 @media (max-width: 640px) {
   .downloads {
+    min-height: auto;
     padding: 48px 0 56px;
   }
 
@@ -124,10 +137,18 @@
     width: min(100% - 28px, 520px);
   }
 
+  .downloads__heading {
+    white-space: normal;
+  }
+
   .downloads__list {
     display: grid;
     grid-template-columns: 1fr;
     gap: 12px;
+  }
+
+  .downloads__item {
+    min-width: 0;
   }
 
   .downloads__button {
