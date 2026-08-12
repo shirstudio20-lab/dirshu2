@@ -1,12 +1,11 @@
 .download-button {
   box-sizing: border-box;
-  width: auto;
-  min-width: 0;
-  min-height: 58px;
+  min-width: 306px;
+  min-height: 59px;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 11px;
+  gap: 13px;
   direction: rtl;
   padding: 0 26px;
   border: 0;
@@ -14,8 +13,8 @@
   background: var(--color-navy);
   color: var(--color-white);
   font-family: var(--font-body);
-  font-size: clamp(17px, 1vw, 19px);
-  font-weight: 400;
+  font-size: clamp(18px, 1.06vw, 20px);
+  font-weight: 700;
   line-height: 1.15;
   text-decoration: none;
   white-space: nowrap;
@@ -33,14 +32,13 @@
 
 .download-button__text {
   display: inline-block;
-  flex: 0 0 auto;
-  text-align: right;
+  text-align: center;
 }
 
 .download-button__icon {
-  width: 35px;
-  height: 35px;
-  flex: 0 0 35px;
+  width: 36px;
+  height: 36px;
+  flex: 0 0 36px;
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -57,14 +55,10 @@
 @media (max-width: 760px) {
   .download-button {
     width: 100%;
+    min-width: 0;
     min-height: 56px;
     padding: 0 20px;
     font-size: 17px;
     white-space: normal;
-  }
-
-  .download-button__text {
-    flex: 1 1 auto;
-    min-width: 0;
   }
 }
