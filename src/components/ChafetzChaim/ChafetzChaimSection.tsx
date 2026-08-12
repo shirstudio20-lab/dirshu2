@@ -135,9 +135,6 @@ export function ChafetzChaimSection({ scale, fluid }: ChafetzChaimSectionProps) 
               </span>
             </p>
 
-            <div className="chafetz__actions-spacer" aria-hidden="true" />
-
-
             <div className="chafetz__purchase-links" aria-label="אפשרויות רכישה">
               {purchaseLinks.map((link) => (
                 <a

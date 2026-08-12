@@ -520,3 +520,37 @@
     display: none;
   }
 }
+
+
+/* Final vertical balance: books and copy sit around the section center,
+   and purchase buttons stay directly below the price. */
+.chafetz__artwork {
+  top: 145px;
+}
+
+.chafetz__copy {
+  top: 220px;
+}
+
+.chafetz__purchase-links {
+  margin-top: 34px;
+}
+
+.chafetz__artwork-actions {
+  top: calc(100% + 24px);
+}
+
+.chafetz__actions-spacer {
+  display: none;
+}
+
+@media (max-width: 1023px) {
+  .chafetz__copy,
+  .chafetz__artwork {
+    top: auto;
+  }
+
+  .chafetz__purchase-links {
+    margin-top: clamp(22px, 5vw, 34px);
+  }
+}
