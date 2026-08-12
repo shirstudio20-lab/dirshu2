@@ -44,6 +44,7 @@
   line-height: 1.02;
   font-weight: 700;
   white-space: pre-line;
+  text-align: right;
 }
 
 .torah-lessons__body {
@@ -65,9 +66,11 @@
   font-size: clamp(23px, 1.9vw, 30px);
   line-height: 1.2;
   font-weight: 800;
+  text-align: right;
 }
 
 .torah-lessons__actions {
+  direction: rtl;
   display: flex;
   justify-content: flex-start;
   gap: 14px;
