@@ -1,11 +1,15 @@
 .learning-programs {
-  background: #f7f1e0;
+  position: relative;
+  background: #f7f1e0 url('/assets/learning-programs-podium-bg.jpg') center / cover no-repeat;
   color: var(--color-navy);
   direction: rtl;
   padding: clamp(78px, 7vw, 122px) 0 clamp(72px, 6.4vw, 104px);
+  overflow: hidden;
 }
 
 .learning-programs__inner {
+  position: relative;
+  z-index: 1;
   width: min(1477px, calc(100% - clamp(36px, 8vw, 144px)));
   margin: 0 auto;
   text-align: center;
