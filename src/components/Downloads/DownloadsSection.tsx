@@ -1,65 +1,45 @@
 import { fileDownloads } from '../../data/downloads'
 import { FileDownloadIcon } from '../icons/FileDownloadIcon'
-import { ScaledStage } from '../ScaledStage/ScaledStage'
 import './DownloadsSection.css'
-
-/** Height of the section on the 1920 canvas (nodes 52:1274 / 52:1431). */
-export const DOWNLOADS_HEIGHT = 1060
 
 type DownloadsSectionProps = {
   scale: number
   fluid: boolean
 }
 
-/**
- * Section "קבצים להורדה" (nodes 52:1274, 52:1431–52:1446).
- *
- * The cards come from `fileDownloads`; a card whose `fileUrl` is still empty
- * renders a disabled button rather than a made-up link.
- */
-export function DownloadsSection({ scale, fluid }: DownloadsSectionProps) {
+export function DownloadsSection(_props: DownloadsSectionProps) {
   return (
-    <section id="downloads" className="downloads" aria-label="קבצים להורדה">
-      <div className="downloads__background" aria-hidden="true" />
+    <section id="downloads" className="downloads" aria-label="\u05e7\u05d1\u05e6\u05d9\u05dd \u05dc\u05d4\u05d5\u05e8\u05d3\u05d4">
+      <div className="downloads__inner">
+        <h2 className="downloads__heading">\u05e7\u05d1\u05e6\u05d9\u05dd \u05dc\u05d4\u05d5\u05e8\u05d3\u05d4</h2>
 
-      <ScaledStage designHeight={DOWNLOADS_HEIGHT} scale={scale} fluid={fluid}>
-        <div className="downloads__inner">
-          {/* Node 52:1274 */}
-          <h2 className="downloads__heading">קבצים להורדה</h2>
-
-          {/* Node 52:1431 */}
-          <ul className="downloads__grid">
-            {fileDownloads.map((item) => (
-              <li className="download-card" key={item.id}>
-                <div className="download-card__preview">
-                  {item.image ? <img src={item.image} alt="" /> : null}
-                </div>
-
-                {item.fileUrl ? (
-                  <a className="download-card__cta" href={item.fileUrl} download>
-                    <span className="download-card__icon">
-                      <FileDownloadIcon />
-                    </span>
-                    {item.title}
-                  </a>
-                ) : (
-                  <button
-                    className="download-card__cta"
-                    type="button"
-                    disabled
-                    title="הקובץ יעלה בקרוב"
-                  >
-                    <span className="download-card__icon">
-                      <FileDownloadIcon />
-                    </span>
-                    {item.title}
-                  </button>
-                )}
-              </li>
-            ))}
-          </ul>
-        </div>
-      </ScaledStage>
+        <ul className="downloads__list">
+          {fileDownloads.map((item) => (
+            <li className="downloads__item" key={item.id}>
+              {item.fileUrl ? (
+                <a className="downloads__button" href={item.fileUrl} download>
+                  <span className="downloads__icon" aria-hidden="true">
+                    <FileDownloadIcon />
+                  </span>
+                  <span>{item.title}</span>
+                </a>
+              ) : (
+                <button
+                  className="downloads__button"
+                  type="button"
+                  disabled
+                  title="\u05d4\u05e7\u05d5\u05d1\u05e5 \u05d9\u05e2\u05dc\u05d4 \u05d1\u05e7\u05e8\u05d5\u05d1"
+                >
+                  <span className="downloads__icon" aria-hidden="true">
+                    <FileDownloadIcon />
+                  </span>
+                  <span>{item.title}</span>
+                </button>
+              )}
+            </li>
+          ))}
+        </ul>
+      </div>
     </section>
   )
 }

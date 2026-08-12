@@ -1,227 +1,153 @@
-/* ---------------------------------------------------------------------------
-   Section "קבצים להורדה" — nodes 52:1274, 52:1431–52:1446.
-   Coordinates are Figma values on the 1920 canvas.
-   --------------------------------------------------------------------------- */
-
 .downloads {
   position: relative;
-  background: var(--color-page);
+  background: #f7f1e0;
+  color: var(--color-navy);
+  direction: rtl;
+  padding: clamp(64px, 5.2vw, 99px) 0 clamp(58px, 4.6vw, 82px);
+  overflow: hidden;
 }
 
-/* Its own layer, so the flat cream can be swapped for a texture later. */
-.downloads__background {
+.downloads::before {
+  content: '';
   position: absolute;
   inset: 0;
-  background: var(--color-page);
   pointer-events: none;
+  background:
+    linear-gradient(rgba(247, 241, 224, 0.86), rgba(247, 241, 224, 0.86)),
+    url('/assets/join-texture.jpg') center / cover no-repeat;
+  opacity: 0.72;
 }
 
 .downloads__inner {
-  position: absolute;
-  inset: 0;
+  position: relative;
+  z-index: 1;
+  width: min(1592px, calc(100% - clamp(32px, 6vw, 122px)));
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: clamp(34px, 2.85vw, 55px);
 }
 
-/* Node 52:1274 */
 .downloads__heading {
-  position: absolute;
-  left: 699px;
-  top: 128px;
-  width: 522px;
+  margin: 0;
+  width: 100%;
   font-family: var(--font-display);
   font-weight: 700;
-  font-size: 91px;
+  font-size: clamp(48px, 4.16vw, 80px);
   line-height: 1;
   color: var(--color-navy);
   text-align: center;
   white-space: nowrap;
 }
 
-/* Node 52:1431 — 1408 wide at (256, 308); three cards, 40.5px apart. */
-.downloads__grid {
-  position: absolute;
-  left: 256px;
-  top: 308px;
-  width: 1408px;
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 40.5px;
-}
-
-/* Node 52:1432 */
-.download-card {
+.downloads__list {
   display: flex;
-  flex-direction: column;
-  gap: 26.769px;
-  padding: 25.494px;
-  background: var(--color-white);
-  border: 1.275px solid #ededed;
-  border-radius: 25.494px;
-  transition: transform 260ms cubic-bezier(0.22, 0.61, 0.36, 1), box-shadow 260ms ease-out;
-}
-
-.download-card:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 18px 38px rgba(13, 49, 103, 0.14);
-}
-
-/* Node 52:1433 */
-.download-card__preview {
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
   width: 100%;
-  aspect-ratio: 388.785 / 492.036;
-  border-radius: 45.889px;
-  overflow: hidden;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  flex-wrap: nowrap;
 }
 
-.download-card__preview img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transition: transform 400ms cubic-bezier(0.22, 0.61, 0.36, 1);
+.downloads__item {
+  min-width: 0;
 }
 
-.download-card:hover .download-card__preview img {
-  transform: scale(1.03);
-}
-
-/* Node 52:1434 */
-.download-card__cta {
-  display: flex;
+.downloads__button {
+  min-height: 73px;
+  display: inline-flex;
   flex-direction: row-reverse;
   align-items: center;
   justify-content: center;
-  gap: 15px;
-  height: 72.658px;
-  padding: 0 25.494px;
-  border-radius: 63.735px;
-  background: #0d3167;
+  gap: 18px;
+  padding: 14px 16px;
+  border: 0;
+  border-radius: 64px;
+  background: var(--color-navy);
+  color: var(--color-white);
   font-family: var(--font-body);
   font-weight: 400;
-  font-size: 21.5px;
+  font-size: clamp(18px, 1.33vw, 25.5px);
   line-height: 1.4;
-  color: var(--color-white);
+  text-align: right;
+  text-decoration: none;
   white-space: nowrap;
-  transition: background-color 220ms ease-out;
 }
 
-/* One flat blue in every state — hover and focus stay on the same #0d3167. */
-.download-card__cta:hover:not(:disabled),
-.download-card__cta:focus-visible {
-  background: #0d3167;
+.downloads__button:hover:not(:disabled),
+.downloads__button:focus-visible {
+  background: #092759;
 }
 
-/* No opacity here: the files are not wired up yet, so these render as disabled
-   buttons, and fading them let the cream card show through and lifted the fill
-   off #0d3167. The colour has to stay exact. */
-.download-card__cta:disabled {
+.downloads__button:disabled {
   cursor: default;
 }
 
-.download-card__icon {
-  display: flex;
-  width: 24px;
-  height: 24px;
-  flex-shrink: 0;
+.downloads__icon {
+  width: clamp(40px, 2.6vw, 50px);
+  height: clamp(40px, 2.45vw, 47px);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 auto;
+  border-radius: 50%;
+  background: var(--color-gold);
+  color: var(--color-navy);
 }
 
-.download-card__icon svg {
-  width: 100%;
-  height: 100%;
+.downloads__icon svg {
+  width: 52%;
+  height: 52%;
 }
 
-/* --- below 1024px -------------------------------------------------------- */
+@media (min-width: 1024px) {
+  .downloads__item:nth-child(1) .downloads__button,
+  .downloads__item:nth-child(2) .downloads__button {
+    min-width: 366px;
+  }
 
-@media (max-width: 1023px) {
-  .downloads .scaled-stage--fluid {
-    padding: clamp(26px, 6vw, 88px) clamp(16px, 5vw, 32px) clamp(34px, 8vw, 88px);
+  .downloads__item:nth-child(3) .downloads__button {
+    min-width: 370px;
+  }
+
+  .downloads__item:nth-child(4) .downloads__button {
+    min-width: 316px;
+  }
+}
+
+@media (max-width: 1240px) {
+  .downloads__list {
+    flex-wrap: wrap;
+  }
+
+  .downloads__button {
+    min-width: min(100%, 360px);
+  }
+}
+
+@media (max-width: 640px) {
+  .downloads {
+    padding: 48px 0 56px;
   }
 
   .downloads__inner {
-    position: static;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: clamp(26px, 6vw, 44px);
+    width: min(100% - 28px, 520px);
   }
 
-  .downloads__heading {
-    position: static;
-    width: auto;
-    font-size: var(--text-section-title);
-    white-space: normal;
+  .downloads__list {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 12px;
   }
 
-  /* The לוח leads on its own full-width row; the two volumes pair up under
-     it, so the section reads as one block rather than a long stack. */
-  .downloads__grid {
-    position: static;
+  .downloads__button {
     width: 100%;
-    max-width: 460px;
-    grid-template-columns: repeat(2, 1fr);
-    gap: clamp(12px, 3.5vw, 22px);
-  }
-
-  .downloads__grid > .download-card:first-child {
-    grid-column: 1 / -1;
-  }
-
-  /* Half-width cards need the label to wrap. */
-  .download-card__cta {
+    min-height: 62px;
+    justify-content: center;
     white-space: normal;
-    text-align: center;
-    padding: 0 14px;
-    gap: 10px;
-  }
-
-  .downloads__grid > .download-card:first-child .download-card__cta {
-    white-space: nowrap;
-  }
-
-  .download-card {
-    gap: clamp(12px, 3vw, 20px);
-    padding: clamp(10px, 2.8vw, 20px);
-    border-radius: clamp(16px, 4vw, 24px);
-  }
-
-  /* A compact square thumbnail: the cover is shown whole inside it rather
-     than filling the card, so the row reads as a list of files. */
-  .download-card__preview {
-    width: 100%;
-    aspect-ratio: auto;
-    height: clamp(148px, 41vw, 210px);
-    border-radius: clamp(14px, 4vw, 20px);
-  }
-
-  .downloads__grid > .download-card:first-child .download-card__preview {
-    height: clamp(190px, 53vw, 260px);
-  }
-
-  /* Fills the frame edge to edge. Cover scales, it never stretches, and the
-     covers are photographed with a wide cream margin, so what the crop takes
-     is background rather than the book. */
-  .download-card__preview img {
-    object-fit: cover;
-    object-position: center;
-  }
-
-  .download-card__cta {
-    height: auto;
-    min-height: clamp(52px, 13vw, 66px);
-    padding-block: 10px;
-    font-size: clamp(12px, 3.1vw, 18px);
-    line-height: 1.25;
-  }
-}
-
-/* Tablets fit two cards to a row comfortably. */
-@media (min-width: 640px) and (max-width: 1023px) {
-  .downloads__grid {
-    max-width: 720px;
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .download-card,
-  .download-card__preview img {
-    transition: none;
   }
 }
