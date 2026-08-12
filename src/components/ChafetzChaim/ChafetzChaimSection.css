@@ -72,27 +72,35 @@
    ground. Both sit below the books, so the covers are never darkened. */
 .chafetz__artwork::before,
 .chafetz__artwork::after {
-  content: '';
-  position: absolute;
-  z-index: 1;
-  border-radius: 50%;
-  pointer-events: none;
+  left: 18%;
+  bottom: 4%;
+  width: 64%;
+  height: 2.8%;
+  background: radial-gradient(
+    ellipse at 50% 50%,
+    rgba(1, 5, 14, 0.55) 0%,
+    rgba(1, 5, 14, 0.32) 48%,
+    rgba(1, 5, 14, 0) 76%
+  );
+  filter: blur(4px);
+  transform: translateY(10px);
 }
 
 /* Penumbra — wider than the set and barely there at its edges. */
 .chafetz__artwork::before {
-  left: -4%;
-  bottom: -5%;
-  width: 108%;
-  height: 12%;
+  left: 7%;
+  bottom: 2%;
+  width: 86%;
+  height: 8%;
   background: radial-gradient(
     ellipse at 50% 50%,
-    rgba(2, 8, 20, 0.34) 0%,
-    rgba(2, 8, 20, 0.16) 40%,
-    rgba(2, 8, 20, 0.05) 64%,
-    rgba(2, 8, 20, 0) 78%
+    rgba(1, 5, 14, 0.38) 0%,
+    rgba(1, 5, 14, 0.22) 42%,
+    rgba(1, 5, 14, 0.07) 66%,
+    rgba(1, 5, 14, 0) 82%
   );
-  filter: blur(22px);
+  filter: blur(16px);
+  transform: translateY(13px);
 }
 
 /* Contact core — short, dark and only lightly blurred, so the set reads as
