@@ -1,21 +1,7 @@
 .downloads {
   position: relative;
-  background: #f7f1e0;
-  color: var(--color-navy);
-  direction: rtl;
-  padding: clamp(64px, 5.2vw, 99px) 0 clamp(58px, 4.6vw, 82px);
-  overflow: hidden;
-}
-
-.downloads::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  background:
-    linear-gradient(rgba(247, 241, 224, 0.86), rgba(247, 241, 224, 0.86)),
-    url('/assets/join-texture.jpg') center / cover no-repeat;
-  opacity: 0.72;
+  background: url('/assets/downloads-paper-texture.jpg') center / cover no-repeat;
+  opacity: 1;
 }
 
 .downloads__inner {
