@@ -1,13 +1,13 @@
 import './TorahLessonsSection.css'
 
 const text = {
-  "title": "שיעורי תורה לאלפים ולרבבות",
-  "body": "מדי יום מתקיימים אלפי שיעורים בכל רחבי תבל הנמסרים על פי סדרי הלימוד בתוכניות הדף היומי בהלכה ועמוד היומי",
-  "label": "רישום לפתיחת שיעורים:",
-  "israel": "דרשו ישראל",
-  "usa": "דרשו ארה\"ב",
-  "europe": "דרשו אירופה",
-  "imageAlt": "ספרי שיעורי דרשו"
+  title: '\u05e9\u05d9\u05e2\u05d5\u05e8\u05d9 \u05ea\u05d5\u05e8\u05d4\n\u05dc\u05d0\u05dc\u05e4\u05d9\u05dd \u05d5\u05dc\u05e8\u05d1\u05d1\u05d5\u05ea',
+  body: '\u05de\u05d3\u05d9 \u05d9\u05d5\u05dd \u05de\u05ea\u05e7\u05d9\u05d9\u05de\u05d9\u05dd \u05d0\u05dc\u05e4\u05d9 \u05e9\u05d9\u05e2\u05d5\u05e8\u05d9\u05dd \u05d1\u05db\u05dc \u05e8\u05d7\u05d1\u05d9 \u05ea\u05d1\u05dc\n\u05d4\u05e0\u05de\u05e1\u05e8\u05d9\u05dd \u05e2\u05dc \u05e4\u05d9 \u05e1\u05d3\u05e8\u05d9 \u05d4\u05dc\u05d9\u05de\u05d5\u05d3 \u05d1\u05ea\u05d5\u05db\u05e0\u05d9\u05d5\u05ea \u05d4\u05d3\u05e3 \u05d4\u05d9\u05d5\u05de\u05d9\n\u05d1\u05d4\u05dc\u05db\u05d4 \u05d5\u05e2\u05de\u05d5\u05d3 \u05d4\u05d9\u05d5\u05de\u05d9',
+  label: '\u05e8\u05d9\u05e9\u05d5\u05dd \u05dc\u05e4\u05ea\u05d9\u05d7\u05ea \u05e9\u05d9\u05e2\u05d5\u05e8\u05d9\u05dd:',
+  israel: '\u05d3\u05e8\u05e9\u05d5 \u05d9\u05e9\u05e8\u05d0\u05dc',
+  usa: '\u05d3\u05e8\u05e9\u05d5 \u05d0\u05e8\u05d4"\u05d1',
+  europe: '\u05d3\u05e8\u05e9\u05d5 \u05d0\u05d9\u05e8\u05d5\u05e4\u05d4',
+  imageAlt: '\u05e1\u05e4\u05e8\u05d9 \u05e9\u05d9\u05e2\u05d5\u05e8\u05d9 \u05d3\u05e8\u05e9\u05d5',
 }
 
 const signupLinks = [
@@ -18,7 +18,7 @@ const signupLinks = [
 
 export function TorahLessonsSection() {
   return (
-    <section className="torah-lessons" aria-label={text.title}>
+    <section className="torah-lessons" aria-label={text.title.replace('\n', ' ')}>
       <div className="torah-lessons__content">
         <div className="torah-lessons__copy">
           <h2 className="torah-lessons__heading">{text.title}</h2>
@@ -38,7 +38,7 @@ export function TorahLessonsSection() {
 
         <div className="torah-lessons__artwork" aria-hidden="true">
           <img
-            src={`${import.meta.env.BASE_URL}assets/book-torat-chafetz-chaim.png`}
+            src={`${import.meta.env.BASE_URL}assets/torah-lessons-books-frame-68.png`}
             alt={text.imageAlt}
             loading="lazy"
           />
