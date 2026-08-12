@@ -7,11 +7,14 @@ type DownloadsSectionProps = {
   fluid: boolean
 }
 
+const heading = "קבצים להורדה"
+const soonTitle = "הקובץ יעלה בקרוב"
+
 export function DownloadsSection(_props: DownloadsSectionProps) {
   return (
-    <section id="downloads" className="downloads" aria-label="\u05e7\u05d1\u05e6\u05d9\u05dd \u05dc\u05d4\u05d5\u05e8\u05d3\u05d4">
+    <section id="downloads" className="downloads" aria-label={heading}>
       <div className="downloads__inner">
-        <h2 className="downloads__heading">\u05e7\u05d1\u05e6\u05d9\u05dd \u05dc\u05d4\u05d5\u05e8\u05d3\u05d4</h2>
+        <h2 className="downloads__heading">{heading}</h2>
 
         <ul className="downloads__list">
           {fileDownloads.map((item) => (
@@ -24,12 +27,7 @@ export function DownloadsSection(_props: DownloadsSectionProps) {
                   <span>{item.title}</span>
                 </a>
               ) : (
-                <button
-                  className="downloads__button"
-                  type="button"
-                  disabled
-                  title="\u05d4\u05e7\u05d5\u05d1\u05e5 \u05d9\u05e2\u05dc\u05d4 \u05d1\u05e7\u05e8\u05d5\u05d1"
-                >
+                <button className="downloads__button" type="button" disabled title={soonTitle}>
                   <span className="downloads__icon" aria-hidden="true">
                     <FileDownloadIcon />
                   </span>

@@ -20,7 +20,7 @@
 .downloads__inner {
   position: relative;
   z-index: 1;
-  width: min(1592px, calc(100% - clamp(34px, 6.4vw, 128px)));
+  width: min(1320px, calc(100% - clamp(34px, 8vw, 150px)));
   margin: 0 auto;
   display: flex;
   flex-direction: column;
@@ -42,26 +42,28 @@
 
 .downloads__list {
   width: 100%;
+  max-width: 1260px;
   margin: 0;
   padding: 0;
-  display: flex;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
   align-items: center;
-  justify-content: center;
   gap: 12px;
   list-style: none;
 }
 
 .downloads__item {
-  flex: 0 0 auto;
+  min-width: 0;
 }
 
 .downloads__button {
+  width: 100%;
   min-height: 73px;
   display: inline-flex;
   flex-direction: row-reverse;
   align-items: center;
   justify-content: center;
-  gap: 18px;
+  gap: 14px;
   padding: 14px 16px;
   border: 0;
   border-radius: 64px;
@@ -69,8 +71,8 @@
   color: var(--color-white);
   font-family: var(--font-body);
   font-weight: 400;
-  font-size: clamp(18px, 1.33vw, 25.5px);
-  line-height: 1.4;
+  font-size: clamp(17px, 1.18vw, 22px);
+  line-height: 1.28;
   text-align: right;
   text-decoration: none;
   white-space: nowrap;
@@ -86,8 +88,8 @@
 }
 
 .downloads__icon {
-  width: clamp(40px, 2.6vw, 50px);
-  height: clamp(40px, 2.45vw, 47px);
+  width: clamp(38px, 2.4vw, 46px);
+  height: clamp(38px, 2.4vw, 46px);
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -102,28 +104,10 @@
   height: 52%;
 }
 
-@media (min-width: 1024px) {
-  .downloads__item:nth-child(1) .downloads__button,
-  .downloads__item:nth-child(2) .downloads__button {
-    min-width: 366px;
-  }
-
-  .downloads__item:nth-child(3) .downloads__button {
-    min-width: 370px;
-  }
-
-  .downloads__item:nth-child(4) .downloads__button {
-    min-width: 316px;
-  }
-}
-
-@media (max-width: 1320px) {
+@media (max-width: 1180px) {
   .downloads__list {
-    flex-wrap: wrap;
-  }
-
-  .downloads__button {
-    min-width: min(100%, 360px);
+    max-width: 760px;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
 
@@ -142,19 +126,12 @@
   }
 
   .downloads__list {
-    display: grid;
+    max-width: 360px;
     grid-template-columns: 1fr;
-    gap: 12px;
-  }
-
-  .downloads__item {
-    min-width: 0;
   }
 
   .downloads__button {
-    width: 100%;
     min-height: 62px;
-    justify-content: center;
     white-space: normal;
   }
 }
