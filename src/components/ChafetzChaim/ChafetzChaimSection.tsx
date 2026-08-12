@@ -82,7 +82,7 @@ export function ChafetzChaimSection({ scale, fluid }: ChafetzChaimSectionProps) 
             <img className="chafetz__glow" src={`${import.meta.env.BASE_URL}assets/chafetz-chaim-glow.svg`} alt="" />
             <img
               className="chafetz__books"
-              src={`${import.meta.env.BASE_URL}assets/chafetz-chaim-set-new.png`}
+              src={`${import.meta.env.BASE_URL}assets/chafetz-chaim-set-v4.png`}
               alt="סט ספרי תורת החפץ חיים"
             />
           </div>
